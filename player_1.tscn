@@ -62,3 +62,4 @@ sprite_frames = SubResource("SpriteFrames_k1ixs")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
