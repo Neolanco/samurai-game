@@ -5,12 +5,10 @@ const Game = preload("res://src/game.gd")
 # some consts
 const ACCELERATION = 30.0
 const JUMP_VELOCITY = -600.0
-const MAX_VELOCITY = 500
-# between 0 and 1
-const SLIDE = 0.7
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+const MAX_VELOCITY = Vector2(500, 1000)
+const SLIDE = 0.7 # between 0 and 1
+const GRAVITY = 1000
+const START_POS = Vector2(90, -200)
 
 var main
 var game
@@ -29,7 +27,7 @@ func read_user_input():
 
 func add_gravity(delta):
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		velocity.y += GRAVITY * delta
 
 func add_move_x(move, delta):
 	if move.x == 0:
@@ -42,7 +40,7 @@ func add_move_x(move, delta):
 			velocity.x += (ACCELERATION ** 2) * delta
 		return
 		
-	if velocity.x < MAX_VELOCITY:
+	if velocity.x < MAX_VELOCITY.x:
 		velocity.x += move.x * (ACCELERATION ** 2) * delta
 
 func add_move_y(move, delta):
@@ -65,9 +63,9 @@ func _ready():
 	main = get_tree().get_root().get_node("Main")
 	main.connect("main_ready", _main_ready)
 	# init game class
-	game = Game.new(main, $".")
+	game = Game.new(main, $".", START_POS)
 
 func _main_ready():
 	game.register_platform("res://Platforms/dirt3-1.tscn")
 	game.init_platforms()
-	$".".global_position = Vector2(90, -200)
+	$".".global_position = START_POS
