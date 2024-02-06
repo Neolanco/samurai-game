@@ -3,9 +3,9 @@ class_name Game
 const Platform = preload("res://src/platform.gd")
 
 # consts
-const JUMP_DISTANCE = Vector2(300, 100)
-const MIN_JUMP_DISTANCE = Vector2(100.0, 10.0)
-const RANDOM_JUMP_DISTANCE = false
+const JUMP_DISTANCE = Vector2(400, 100)
+const MIN_JUMP_DISTANCE = Vector2(200.0, 50.0)
+const RANDOM_JUMP_DISTANCE = true
 
 var _loaded_platforms: Array[Node2D]
 var _aviable_platforms: Array[Platform]
@@ -18,7 +18,7 @@ var _start_pos # player start_pos
 
 var _velocity: Vector2
 var _last_node: TileMap
-var _last_pos: Vector2
+var _first_pos: Vector2
 
 func _init(main: Node2D, player: CharacterBody2D, start_pos: Vector2):
 	_main = main
@@ -67,6 +67,7 @@ func generate_platform():
 		_loaded_platforms.append(node)
 		_main.add_child(node)
 		_last_node = node
+		_first_pos = node.global_position
 	else:
 		# load random node
 		var index = _rng.randi_range(0, _aviable_platforms.size() - 1)
@@ -102,14 +103,13 @@ func update(delta):
 	if pos.y > _last_node.global_position.y + 1200:
 		kill_player()
 	
-	for platform in _loaded_platforms.duplicate():
-		# must be after kill_player anf offset must be more than kill_player
-		if platform.global_position.x < pos.x - 1000 || platform.global_position.y < pos.y - 1000 || platform.global_position.y > pos.y + 1000:
-			if platform != _last_node:
-				_loaded_platforms.erase(platform)
-				_main.remove_child(platform)
-				platform.queue_free()
-				generate_platform()
+	# must be after kill_player anf offset must be more than kill_player
+	if _first_pos.x < pos.x - 1000 || _first_pos.y < pos.y - 1000 || _first_pos.y > pos.y + 1000:
+		var platform = _loaded_platforms.pop_front()
+		_main.remove_child(platform)
+		platform.queue_free()
+		generate_platform()
+		_first_pos = _loaded_platforms[0].global_position
 
 func kill_player():
 	_player.global_position = _start_pos
