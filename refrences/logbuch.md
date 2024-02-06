@@ -1,3 +1,6 @@
+# Aktueller Stand:
+https://github.com/Neolanco/samurai-game
+
 # Projekt-Idee
 - Jump'n run mit automatischer weltgenerierung und action-elementen
 - gravitationsänderung für puzzel

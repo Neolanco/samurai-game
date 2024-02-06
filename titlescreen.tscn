@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://csvhfk8ckmvr0"]
+[gd_scene load_steps=10 format=3 uid="uid://csvhfk8ckmvr0"]
 
 [ext_resource type="Script" path="res://titlescreen.gd" id="1_xus21"]
 [ext_resource type="Texture2D" uid="uid://wosbsq2yir2f" path="res://sprites/tiles_spritesheet.png" id="1_ygte5"]
 [ext_resource type="PackedScene" uid="uid://dnopqbshnc0jx" path="res://player_dummy.tscn" id="2_rnf7f"]
+[ext_resource type="Texture2D" uid="uid://gyfnklba5bvu" path="res://refrences/cave backgrounds/grey_L1.png" id="4_hvbxn"]
+[ext_resource type="Texture2D" uid="uid://bjpcb421mk7vh" path="res://refrences/cave backgrounds/grey_L2.png" id="5_hdlcj"]
+[ext_resource type="Texture2D" uid="uid://2a08sm62xvhh" path="res://refrences/cave backgrounds/grey_L3.png" id="6_oiuuu"]
+[ext_resource type="Texture2D" uid="uid://ojs3lgeuqtq0" path="res://refrences/cave backgrounds/grey_L4.png" id="7_4fv0y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_souv5"]
 texture = ExtResource("1_ygte5")
@@ -493,7 +497,7 @@ script = ExtResource("1_xus21")
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_wecbi")
 format = 2
-layer_0/tile_data = PackedInt32Array(327680, 458752, 7, 327681, 458752, 7, 327682, 458752, 7, 327683, 458752, 7, 327684, 458752, 7)
+layer_0/tile_data = PackedInt32Array(327680, 458752, 8, 327681, 458752, 8, 327682, 458752, 8, 327683, 458752, 8, 327684, 524288, 7, 393220, 524288, 805306377, 393219, 524288, 12, 393218, 524288, 12, 393217, 524288, 12, 393216, 524288, 12, 458751, 524288, 12, 393215, 458752, 8)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
@@ -501,4 +505,28 @@ limit_left = 0
 limit_top = 0
 
 [node name="Player_dummy" parent="." instance=ExtResource("2_rnf7f")]
-position = Vector2(61, 303)
+position = Vector2(50, 307)
+
+[node name="GreyL1" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(423, 218.75)
+scale = Vector2(1.5, 1.75)
+texture = ExtResource("4_hvbxn")
+
+[node name="GreyL2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(423, 218.75)
+scale = Vector2(1.5, 1.75)
+texture = ExtResource("5_hdlcj")
+
+[node name="GreyL3" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(423, 218.75)
+scale = Vector2(1.5, 1.75)
+texture = ExtResource("6_oiuuu")
+
+[node name="GreyL4" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(423, 218.75)
+scale = Vector2(1.5, 1.75)
+texture = ExtResource("7_4fv0y")
