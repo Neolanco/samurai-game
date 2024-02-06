@@ -1,0 +1,126 @@
+[gd_scene load_steps=19 format=3 uid="uid://dnopqbshnc0jx"]
+
+[ext_resource type="Texture2D" uid="uid://b5gncipbhu4rv" path="res://sprites/crow_centred/idle1/1.PNG" id="2_313rd"]
+[ext_resource type="Texture2D" uid="uid://buli42slg74mi" path="res://sprites/crow_centred/idle1/2.PNG" id="3_57s4u"]
+[ext_resource type="Texture2D" uid="uid://dql356fs2cx8o" path="res://sprites/crow_centred/idle1/3.PNG" id="4_sggfs"]
+[ext_resource type="Texture2D" uid="uid://dskedmjfkvan7" path="res://sprites/crow_centred/idle1/4.PNG" id="5_h355g"]
+[ext_resource type="Texture2D" uid="uid://p365qmkhwg0k" path="res://sprites/crow_centred/idle1/5.PNG" id="6_q6sl1"]
+[ext_resource type="Texture2D" uid="uid://diw4l2nylk1sx" path="res://sprites/crow/Walk/1.PNG" id="7_6sof3"]
+[ext_resource type="Texture2D" uid="uid://dh8lw7no0072r" path="res://sprites/crow_centred/idle1/6.PNG" id="7_vha0h"]
+[ext_resource type="Texture2D" uid="uid://ub2paoq8yxy6" path="res://sprites/crow/Walk/2.PNG" id="8_t826m"]
+[ext_resource type="Texture2D" uid="uid://vy4wo7uvos5h" path="res://sprites/crow/Walk/3.PNG" id="9_wscnq"]
+[ext_resource type="Texture2D" uid="uid://coqlxnic4rk25" path="res://sprites/crow/Walk/4.PNG" id="10_thaoq"]
+[ext_resource type="Texture2D" uid="uid://c60hwxmbvwqxc" path="res://sprites/crow/Walk/5.PNG" id="11_7lwgs"]
+[ext_resource type="Texture2D" uid="uid://bxka0l3stw5yr" path="res://sprites/crow/Walk/6.PNG" id="12_q02kp"]
+[ext_resource type="Texture2D" uid="uid://boaelhmtbdsy6" path="res://sprites/crow/Walk/7.PNG" id="13_3vs6h"]
+[ext_resource type="Texture2D" uid="uid://cv012npbaqmfs" path="res://sprites/crow/Walk/8.PNG" id="14_tyygx"]
+
+[sub_resource type="GDScript" id="GDScript_3f6px"]
+script/source = "extends CharacterBody2D
+
+
+const SPEED = 300.0
+const JUMP_VELOCITY = -400.0
+
+# Get the gravity from the project settings to be synced with RigidBody nodes.
+var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
+
+func _ready():
+	$Sprite_Idle.play()
+
+func _physics_process(delta):
+	# Add the gravity.
+	if not is_on_floor():
+		velocity.y += gravity * delta
+
+	# Handle jump.
+	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	if direction:
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		
+
+	move_and_slide()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qschw"]
+size = Vector2(45, 89)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p0cw1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_313rd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_57s4u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sggfs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_h355g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_q6sl1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vha0h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dmpo2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_6sof3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_t826m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_wscnq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_thaoq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7lwgs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_q02kp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_3vs6h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_tyygx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Player_dummy" type="CharacterBody2D"]
+script = SubResource("GDScript_3f6px")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(12.5, -1.5)
+shape = SubResource("RectangleShape2D_qschw")
+
+[node name="Sprite_Idle" type="AnimatedSprite2D" parent="."]
+position = Vector2(10, -7)
+sprite_frames = SubResource("SpriteFrames_p0cw1")
+
+[node name="Sprite_Walking" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(3, -1)
+sprite_frames = SubResource("SpriteFrames_dmpo2")
