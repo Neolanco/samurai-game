@@ -19,6 +19,10 @@ func _init(main: Node2D, speed: float):
 	_rng = RandomNumberGenerator.new()
 	_rng.randomize()
 
+func init_platforms():
+	for i in 10:
+		generate_platform()
+
 func generate_platform():
 	if _loaded_platforms.size() == 0:
 		# load first platform
@@ -60,6 +64,11 @@ func _get_most_right_position(node: TileMap):
 func update(delta):
 	for platform in _loaded_platforms:
 		platform.global_position += _speed * delta * _velocity
+		if platform.global_position.x < -1000 || platform.global_position.y < -1000:
+			_loaded_platforms.erase(platform)
+			_main.remove_child(platform)
+			platform.queue_free()
+			generate_platform()
 
 func player_input(x: int, y: int):
 	if (abs(x) != 1 && x != 0) || (abs(y) != 1 && y != 0):
