@@ -7,14 +7,16 @@ var _aviable_platforms: Array[Platform]
 var _rng: RandomNumberGenerator
 var _main
 var _speed
+var _player
 # var _init_pos const 0 0
 
 var _velocity: Vector2
 var _last_node: TileMap
 
-func _init(main: Node2D, speed: float):
+func _init(main: Node2D, speed: float, player: CharacterBody2D):
 	_main = main
 	_speed = speed
+	_player = player
 	
 	_rng = RandomNumberGenerator.new()
 	_rng.randomize()
@@ -55,10 +57,9 @@ func register_platform(platform: String):
 # local
 func _get_most_right_position(node: TileMap):
 	var max = Vector2i(0, 0)
-	for layer in node.get_layers_count():
-		for pos in node.get_used_cells(layer):
-			if pos.x > max.x:
-				max = pos
+	for pos in node.get_used_cells(0):
+		if pos.x > max.x:
+			max = pos
 	return node.map_to_local(max) + Vector2(0.5 * node.rendering_quadrant_size, -0.5 * node.rendering_quadrant_size)
 
 func update(delta):
