@@ -1,2 +1,5 @@
 # Godot 4+ specific ignores
 .godot/
+sprites/player1/p1_walk/Thumbs.db
+sprites/Thumbs.db
+sprites/player1/walk/Thumbs.db
