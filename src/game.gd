@@ -42,7 +42,7 @@ func generate_platform():
 		node.global_position = _get_most_right_position(_last_node) + _last_node.global_position
 		
 		# apply jump
-		node.global_position.x += 100
+		# node.global_position.x += 100
 		
 		# add platform (node)
 		_loaded_platforms.append(node)
