@@ -88,9 +88,31 @@ position_smoothing_enabled = true
 [node name="Sprite_Idle" type="AnimatedSprite2D" parent="."]
 position = Vector2(10, -7)
 sprite_frames = SubResource("SpriteFrames_cbhj6")
+<<<<<<< HEAD
 frame_progress = 0.256206
+=======
+frame_progress = 0.222058
+>>>>>>> a6b89a57a79ac21e917c060d1e92bb16a7a79156
 
 [node name="Sprite_Walking" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(3, -1)
 sprite_frames = SubResource("SpriteFrames_7mfx8")
+<<<<<<< HEAD
+=======
+frame_progress = 0.584555
+
+[node name="Sprite_Death" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(9, -7)
+sprite_frames = SubResource("SpriteFrames_k12co")
+frame = 5
+frame_progress = 1.0
+
+[node name="Sprite_Jump" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(13, -7)
+sprite_frames = SubResource("SpriteFrames_wntjj")
+frame = 14
+frame_progress = 1.0
+>>>>>>> a6b89a57a79ac21e917c060d1e92bb16a7a79156

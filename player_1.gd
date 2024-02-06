@@ -3,7 +3,14 @@ extends CharacterBody2D
 # import game
 const Game = preload("res://src/game.gd")
 # some consts
-const SPEED = 1000
+const ACCELERATION = 30.0
+const JUMP_VELOCITY = -400.0
+const MAX_VELOCITY = 500
+# between 0 and 1
+const SLIDE = 0.7
+
+# Get the gravity from the project settings to be synced with RigidBody nodes.
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var main
 var game
@@ -20,10 +27,27 @@ func read_user_input():
 		move.x += 1
 	return move
 
+func add_gravity(delta):
+	if not is_on_floor():
+		velocity.y += gravity * delta
+
+func add_move_x(move, delta):
+	if velocity.x < MAX_VELOCITY:
+		velocity.x += move.x * (ACCELERATION ** 2) * delta
+
+func add_move_y(move, delta):
+	if is_on_floor():
+		velocity.y += JUMP_VELOCITY
+
 func _physics_process(delta):
-	game.update(delta)
 	var move = read_user_input()
-	game.player_input(move.x, move.y)
+	add_move_x(move, delta)
+	add_move_y(move, delta)
+	
+	add_gravity(delta)
+	move_and_slide()
+	
+	game.update(delta)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,8 +55,9 @@ func _ready():
 	main = get_tree().get_root().get_node("Main")
 	main.connect("main_ready", _main_ready)
 	# init game class
-	game = Game.new(main, SPEED)
+	game = Game.new(main, $".")
 
 func _main_ready():
 	game.register_platform("res://Platforms/dirt3-1.tscn")
 	game.init_platforms()
+	$".".global_position = Vector2(90, -200)

@@ -6,15 +6,15 @@ var _loaded_platforms: Array[Node2D]
 var _aviable_platforms: Array[Platform]
 var _rng: RandomNumberGenerator
 var _main
-var _speed
+var _player
 # var _init_pos const 0 0
 
 var _velocity: Vector2
 var _last_node: TileMap
 
-func _init(main: Node2D, speed: float):
+func _init(main: Node2D, player: CharacterBody2D):
 	_main = main
-	_speed = speed
+	_player = player
 	
 	_rng = RandomNumberGenerator.new()
 	_rng.randomize()
@@ -55,24 +55,17 @@ func register_platform(platform: String):
 # local
 func _get_most_right_position(node: TileMap):
 	var max = Vector2i(0, 0)
-	for layer in node.get_layers_count():
-		for pos in node.get_used_cells(layer):
-			if pos.x > max.x:
-				max = pos
+	for pos in node.get_used_cells(0):
+		if pos.x > max.x:
+			max = pos
 	return node.map_to_local(max) + Vector2(0.5 * node.rendering_quadrant_size, -0.5 * node.rendering_quadrant_size)
 
 func update(delta):
 	for platform in _loaded_platforms:
-		platform.global_position += _speed * delta * _velocity
-		if platform.global_position.x < -1000 || platform.global_position.y < -1000:
-			_loaded_platforms.erase(platform)
-			_main.remove_child(platform)
-			platform.queue_free()
-			generate_platform()
-
-func player_input(x: int, y: int):
-	if (abs(x) != 1 && x != 0) || (abs(y) != 1 && y != 0):
-		push_error("x and y must be 1 -1 or 1")
-		return
-	
-	_velocity = Vector2(x, y)
+		var pos = _player.global_position
+		if platform.global_position.x < pos.x - 1000 || platform.global_position.y < pos.y - 1000:
+			if platform != _last_node:
+				_loaded_platforms.erase(platform)
+				_main.remove_child(platform)
+				platform.queue_free()
+				generate_platform()
