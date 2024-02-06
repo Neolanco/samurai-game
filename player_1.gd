@@ -31,7 +31,7 @@ func _ready():
 	main = get_tree().get_root().get_node("Main")
 	main.connect("main_ready", _main_ready)
 	# init game class
-	game = Game.new(main, SPEED)
+	game = Game.new(main, SPEED, $".")
 
 func _main_ready():
 	game.register_platform("res://Platforms/dirt3-1.tscn")
