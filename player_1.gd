@@ -80,6 +80,9 @@ func _ready():
 	main.connect("main_ready", _main_ready)
 	# init game class
 	game = Game.new(main, $".", START_POS)
+	# hide mouse cursor
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	# Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _main_ready():
 	game.register_platform("res://Platforms/dirt3-1.tscn")
