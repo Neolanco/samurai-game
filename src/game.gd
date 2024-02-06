@@ -33,8 +33,8 @@ func init_platforms():
 		generate_platform()
 
 func clear_platforms():
-	for platform in _loaded_platforms.duplicate():
-		_loaded_platforms.erase(platform)
+	for i in _loaded_platforms.size():
+		var platform = _loaded_platforms.pop_back()
 		_main.remove_child(platform)
 		platform.queue_free()
 		_last_node = null
@@ -96,14 +96,12 @@ func _get_most_right_position(node: TileMap):
 	return node.map_to_local(max) + Vector2(0.5 * node.rendering_quadrant_size, -0.5 * node.rendering_quadrant_size)
 
 func update(delta):
-	# clone pos so that is is equal in the whole tick and dont change
-	var pos = Vector2(_player.global_position.x, _player.global_position.y)
-	
 	# must be before generate_platform and offset must be less than generate_platform
-	if pos.y > _last_node.global_position.y + 1200:
+	if _player.global_position.y > _last_node.global_position.y + 1200:
 		kill_player()
 	
 	# must be after kill_player anf offset must be more than kill_player
+	var pos = _player.global_position
 	if _first_pos.x < pos.x - 1000 || _first_pos.y < pos.y - 1000 || _first_pos.y > pos.y + 1000:
 		var platform = _loaded_platforms.pop_front()
 		_main.remove_child(platform)
@@ -113,5 +111,6 @@ func update(delta):
 
 func kill_player():
 	_player.global_position = _start_pos
+	# _player.velocity = Vector2(0, 0)
 	clear_platforms()
 	init_platforms()
