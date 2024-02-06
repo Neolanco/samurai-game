@@ -134,7 +134,7 @@ shape = SubResource("RectangleShape2D_qschw")
 [node name="Sprite_Idle" type="AnimatedSprite2D" parent="."]
 position = Vector2(10, -7)
 sprite_frames = SubResource("SpriteFrames_p0cw1")
-frame_progress = 0.0297153
+frame_progress = 0.899867
 
 [node name="Sprite_Walking" type="AnimatedSprite2D" parent="."]
 visible = false

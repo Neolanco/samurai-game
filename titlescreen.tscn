@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://csvhfk8ckmvr0"]
+[gd_scene load_steps=11 format=3 uid="uid://csvhfk8ckmvr0"]
 
 [ext_resource type="Script" path="res://titlescreen.gd" id="1_xus21"]
 [ext_resource type="Texture2D" uid="uid://wosbsq2yir2f" path="res://sprites/tiles_spritesheet.png" id="1_ygte5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bjpcb421mk7vh" path="res://refrences/cave backgrounds/grey_L2.png" id="5_hdlcj"]
 [ext_resource type="Texture2D" uid="uid://2a08sm62xvhh" path="res://refrences/cave backgrounds/grey_L3.png" id="6_oiuuu"]
 [ext_resource type="Texture2D" uid="uid://ojs3lgeuqtq0" path="res://refrences/cave backgrounds/grey_L4.png" id="7_4fv0y"]
+[ext_resource type="Texture2D" uid="uid://dd353hmojglcs" path="res://sprites/general-masks/shadow.png" id="8_ntpad"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_souv5"]
 texture = ExtResource("1_ygte5")
@@ -494,18 +495,43 @@ sources/0 = SubResource("TileSetAtlasSource_souv5")
 [node name="Titlescreen" type="Node2D"]
 script = ExtResource("1_xus21")
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.356863, 0.447059, 0.494118, 1)
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_wecbi")
 format = 2
 layer_0/tile_data = PackedInt32Array(327680, 458752, 8, 327681, 458752, 8, 327682, 458752, 8, 327683, 458752, 8, 327684, 524288, 7, 393220, 524288, 805306377, 393219, 524288, 12, 393218, 524288, 12, 393217, 524288, 12, 393216, 524288, 12, 458751, 524288, 12, 393215, 458752, 8)
 
+[node name="Player_dummy" parent="." instance=ExtResource("2_rnf7f")]
+z_index = 4
+position = Vector2(49.9995, 307)
+scale = Vector2(1, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="Player_dummy"]
+position = Vector2(11, 71)
+scale = Vector2(2, 1.74805)
+energy = 0.25
+texture = ExtResource("8_ntpad")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Player_dummy"]
+visible = false
+energy = 1.05
+range_z_min = -1
+range_z_max = -1
+
+[node name="PointLight2D2" type="PointLight2D" parent="Player_dummy"]
+visible = false
+light_mask = 2
+position = Vector2(7, 91)
+scale = Vector2(2.5, 8.65283)
+energy = 0.25
+texture = ExtResource("8_ntpad")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
 limit_left = 0
 limit_top = 0
-
-[node name="Player_dummy" parent="." instance=ExtResource("2_rnf7f")]
-position = Vector2(50, 307)
 
 [node name="GreyL1" type="Sprite2D" parent="."]
 z_index = -1
