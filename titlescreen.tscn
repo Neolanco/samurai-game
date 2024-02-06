@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://csvhfk8ckmvr0"]
+
+[ext_resource type="Texture2D" uid="uid://wosbsq2yir2f" path="res://sprites/tiles_spritesheet.png" id="1_ygte5"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_souv5"]
+texture = ExtResource("1_ygte5")
+margins = Vector2i(70, 70)
+separation = Vector2i(2, 2)
+
+[sub_resource type="TileSet" id="TileSet_wecbi"]
+sources/0 = SubResource("TileSetAtlasSource_souv5")
+
+[node name="Titlescreen" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_wecbi")
+format = 2

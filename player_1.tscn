@@ -188,12 +188,13 @@ position_smoothing_enabled = true
 [node name="Sprite_Idle" type="AnimatedSprite2D" parent="."]
 position = Vector2(10, -7)
 sprite_frames = SubResource("SpriteFrames_cbhj6")
-frame_progress = 0.632772
+frame_progress = 0.222058
 
 [node name="Sprite_Walking" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(3, -1)
 sprite_frames = SubResource("SpriteFrames_7mfx8")
+frame_progress = 0.584555
 
 [node name="Sprite_Death" type="AnimatedSprite2D" parent="."]
 visible = false
