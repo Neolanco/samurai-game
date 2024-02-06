@@ -35,5 +35,4 @@ func _ready():
 
 func _main_ready():
 	game.register_platform("res://Platforms/dirt3-1.tscn")
-	for i in 5:
-		game.generate_platform()
+	game.init_platforms()
