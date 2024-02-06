@@ -4,10 +4,11 @@ extends CharacterBody2D
 const Game = preload("res://src/game.gd")
 # some consts
 const ACCELERATION = 30.0
-const JUMP_VELOCITY = -600.0
+const JUMP_VELOCITY = -300.0
+const AIR_JUMP_VELOCITY = -200.0
 const MAX_VELOCITY = Vector2(500, 1000)
-const SLIDE = 0.7 # between 0 and 1
-const GRAVITY = 1000
+const SLIDE = 0.2 # between 0 and 1
+const GRAVITY = 800
 const START_POS = Vector2(90, -200)
 
 var main
@@ -44,13 +45,25 @@ func add_move_x(move, delta):
 		velocity.x += move.x * (ACCELERATION ** 2) * delta
 
 func add_move_y(move, delta):
-	if is_on_floor() && move.y == -1:
-		velocity.y += JUMP_VELOCITY
+	if move.y == -1:
+		if is_on_floor():
+			# velocity fixed
+			velocity.y += JUMP_VELOCITY
+		else:
+			velocity.y += AIR_JUMP_VELOCITY * delta
+
+func flip_player():
+	$"Sprite_Idle".flip_h = velocity.x < 0
+	$"Sprite_Walking".flip_h = velocity.x < 0
+	$"Sprite_Death".flip_h = velocity.x < 0
+	$"Sprite_Jump".flip_h = velocity.x < 0
 
 func _physics_process(delta):
 	var move = read_user_input()
 	add_move_x(move, delta)
 	add_move_y(move, delta)
+	
+	flip_player()
 	
 	add_gravity(delta)
 	move_and_slide()
