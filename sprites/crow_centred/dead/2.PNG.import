@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cehbop6qqh06d"
-path="res://.godot/imported/5.PNG-51274cf7c079aad4d6f953e415c7c6c5.ctex"
+uid="uid://dpbq4ei2h0plu"
+path="res://.godot/imported/2.PNG-1ed2a680377affebd6c5f75e8cade2a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/crow/Dead/5.PNG"
-dest_files=["res://.godot/imported/5.PNG-51274cf7c079aad4d6f953e415c7c6c5.ctex"]
+source_file="res://sprites/crow_centred/dead/2.PNG"
+dest_files=["res://.godot/imported/2.PNG-1ed2a680377affebd6c5f75e8cade2a2.ctex"]
 
 [params]
 
