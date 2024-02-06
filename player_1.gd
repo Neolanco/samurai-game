@@ -4,7 +4,7 @@ extends CharacterBody2D
 const Game = preload("res://src/game.gd")
 # some consts
 const ACCELERATION = 30.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -600.0
 const MAX_VELOCITY = 500
 # between 0 and 1
 const SLIDE = 0.7
@@ -32,11 +32,21 @@ func add_gravity(delta):
 		velocity.y += gravity * delta
 
 func add_move_x(move, delta):
+	if move.x == 0:
+		if abs(velocity.x) < (ACCELERATION ** 2) * delta:
+			velocity.x = 0
+			return
+		if velocity.x > 0:
+			velocity.x -= (ACCELERATION ** 2) * delta
+		elif velocity.x < 0:
+			velocity.x += (ACCELERATION ** 2) * delta
+		return
+		
 	if velocity.x < MAX_VELOCITY:
 		velocity.x += move.x * (ACCELERATION ** 2) * delta
 
 func add_move_y(move, delta):
-	if is_on_floor():
+	if is_on_floor() && move.y == -1:
 		velocity.y += JUMP_VELOCITY
 
 func _physics_process(delta):
