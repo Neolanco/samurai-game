@@ -3,12 +3,15 @@ extends CharacterBody2D
 # import game
 const Game = preload("res://src/game.gd")
 # some consts
-const ACCELERATION = 30.0
-const JUMP_VELOCITY = -300.0
-const AIR_JUMP_VELOCITY = -200.0
+# y
+const JUMP_VELOCITY = -600.0
+const AIR_JUMP_VELOCITY = -400.0
+const GRAVITY = 1600
+# x
 const MAX_VELOCITY = Vector2(500, 1000)
+const ACCELERATION = 30.0
 const SLIDE = 0.2 # between 0 and 1
-const GRAVITY = 800
+# other
 const START_POS = Vector2(90, -200)
 
 var main
@@ -77,7 +80,6 @@ func _ready():
 	main.connect("main_ready", _main_ready)
 	# init game class
 	game = Game.new(main, $".", START_POS)
-	game.set_jump_distance(MAX_VELOCITY.x, JUMP_VELOCITY, AIR_JUMP_VELOCITY, GRAVITY)
 
 func _main_ready():
 	game.register_platform("res://Platforms/dirt3-1.tscn")
