@@ -77,6 +77,7 @@ func _ready():
 	main.connect("main_ready", _main_ready)
 	# init game class
 	game = Game.new(main, $".", START_POS)
+	game.set_jump_distance(MAX_VELOCITY.x, JUMP_VELOCITY, AIR_JUMP_VELOCITY, GRAVITY)
 
 func _main_ready():
 	game.register_platform("res://Platforms/dirt3-1.tscn")

@@ -2,6 +2,9 @@ class_name Game
 
 const Platform = preload("res://src/platform.gd")
 
+# consts
+const PADDING = Vector2(100.0, 10.0)
+
 var _loaded_platforms: Array[Node2D]
 var _aviable_platforms: Array[Platform]
 var _rng: RandomNumberGenerator
@@ -12,6 +15,7 @@ var _start_pos
 
 var _velocity: Vector2
 var _last_node: TileMap
+var _jump_distance: Vector2
 
 func _init(main: Node2D, player: CharacterBody2D, start_pos: Vector2):
 	_main = main
@@ -33,6 +37,38 @@ func clear_platforms():
 		_last_node = null
 		_loaded_platforms = []
 
+func set_jump_distance(speed: float, jump_velocity: float, air_jump_velocity: float, gravity: float):
+	# chat gpt start
+	var max_horizontal_distance = speed * (jump_velocity / gravity)
+	var max_vertical_distance = (jump_velocity * jump_velocity) / (2 * gravity)
+	var max_air_horizontal_distance = speed * (air_jump_velocity / gravity)
+	var max_air_vertical_distance = (air_jump_velocity * air_jump_velocity) / (2 * gravity)
+	
+	var max_x = max(max_horizontal_distance, max_air_horizontal_distance)
+	var max_y = max(max_vertical_distance, max_air_vertical_distance)
+	# chat gpt end
+	
+	_jump_distance = Vector2(abs(max_x), abs(max_y))
+
+func get_random_jump_vector():
+	# check if _jump_distance is lower than PADDING
+	# and if so set it to PADDING
+	# x and y independet from each other
+	if _jump_distance.x < PADDING.x:
+		_jump_distance.x = PADDING.x
+	if _jump_distance.y < PADDING.y:
+		_jump_distance.y = PADDING.y
+	
+	# generate random numbers
+	var x = _rng.randi_range(PADDING.x, _jump_distance.x)
+	var y = _rng.randi_range(PADDING.y, _jump_distance.y)
+	
+	# shodt platform be below or above
+	if _rng.randf() > 0.5:
+		y = -y
+		
+	return Vector2(x, y)
+
 func generate_platform():
 	if _loaded_platforms.size() == 0:
 		# load first platform
@@ -52,7 +88,7 @@ func generate_platform():
 		node.global_position = _get_most_right_position(_last_node) + _last_node.global_position
 		
 		# apply jump
-		node.global_position.x += 100
+		node.global_position += get_random_jump_vector()
 		
 		# add platform (node)
 		_loaded_platforms.append(node)
