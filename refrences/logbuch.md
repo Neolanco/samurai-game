@@ -9,3 +9,5 @@
 - algorhytmus für aneinandereiung verschiedener platformen halbfertig
 - sprites für main-character
 - designideen gesammelt
+### Leon
+- Sprites anpassen und implementieren
