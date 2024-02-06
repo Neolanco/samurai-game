@@ -21,9 +21,9 @@ func read_user_input():
 	return move
 
 func _physics_process(delta):
-	game.update_platforms(delta)
+	game.update(delta)
 	var move = read_user_input()
-	game.move(move.x, move.y)
+	game.player_input(move.x, move.y)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,5 +34,6 @@ func _ready():
 	game = Game.new(main, SPEED)
 
 func _main_ready():
-	game.register_platform("res://Platforms/dirt3-1.tscn", 0, 0)
-	game.register_platform("res://Platforms/dirt3-1.tscn", -500, 20)
+	game.register_platform("res://Platforms/dirt3-1.tscn")
+	for i in 5:
+		game.generate_platform()
