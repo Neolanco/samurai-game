@@ -183,6 +183,7 @@ position = Vector2(12.5, -1.5)
 shape = SubResource("RectangleShape2D_u1a71")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
 
 [node name="Sprite_Idle" type="AnimatedSprite2D" parent="."]
 position = Vector2(10, -7)
