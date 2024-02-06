@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-# import game
-const Game = preload("res://src/game.gd")
 # some consts
 # y
 const JUMP_VELOCITY = -600.0

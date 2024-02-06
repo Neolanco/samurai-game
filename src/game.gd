@@ -1,7 +1,5 @@
 class_name Game
 
-const Platform = preload("res://src/platform.gd")
-
 # consts
 const JUMP_DISTANCE = Vector2(400, 100)
 const MIN_JUMP_DISTANCE = Vector2(200.0, 50.0)
@@ -16,7 +14,6 @@ var _start_pos # player start_pos
 # platform init_pos
 # var _init_pos const 0 0
 
-var _velocity: Vector2
 var _last_node: TileMap
 var _first_pos: Vector2
 
@@ -48,8 +45,8 @@ func get_random_jump_vector():
 		y = JUMP_DISTANCE.y
 	else:
 		# generate random numbers
-		x = _rng.randi_range(MIN_JUMP_DISTANCE.x, JUMP_DISTANCE.x)
-		y = _rng.randi_range(MIN_JUMP_DISTANCE.y, JUMP_DISTANCE.y)
+		x = _rng.randf_range(MIN_JUMP_DISTANCE.x, JUMP_DISTANCE.x)
+		y = _rng.randf_range(MIN_JUMP_DISTANCE.y, JUMP_DISTANCE.y)
 	
 	# shoudt platform be below or above
 	if _rng.randf() > 0.5:
@@ -89,13 +86,13 @@ func register_platform(platform: String):
 
 # local
 func _get_most_right_position(node: TileMap):
-	var max = Vector2i(0, 0)
+	var max_cell = Vector2i(0, 0)
 	for pos in node.get_used_cells(0):
-		if pos.x > max.x:
-			max = pos
-	return node.map_to_local(max) + Vector2(0.5 * node.rendering_quadrant_size, -0.5 * node.rendering_quadrant_size)
+		if pos.x > max_cell.x:
+			max_cell = pos
+	return node.map_to_local(max_cell) + Vector2(0.5 * node.rendering_quadrant_size, -0.5 * node.rendering_quadrant_size)
 
-func update(delta):
+func update(_delta):
 	# must be before generate_platform and offset must be less than generate_platform
 	if _player.global_position.y > _last_node.global_position.y + 1200:
 		kill_player()
