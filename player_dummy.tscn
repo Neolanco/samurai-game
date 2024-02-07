@@ -125,6 +125,7 @@ animations = [{
 }]
 
 [node name="Player_dummy" type="CharacterBody2D"]
+scale = Vector2(1.5, 1.5)
 script = SubResource("GDScript_3f6px")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

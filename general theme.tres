@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://l2kuag675c7k"]
+
+[ext_resource type="FontFile" uid="uid://jmd3ptqh1kl7" path="res://refrences/2D lighting tutorial/pixelated.ttf" id="1_e38fj"]
+
+[resource]
+default_font = ExtResource("1_e38fj")
