@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cwofbo0jb24fy"]
 
-[ext_resource type="TileSet" uid="uid://curtu215lbuqg" path="res://sprites/general-tileset.tres" id="1_j83ws"]
+[ext_resource type="TileSet" uid="uid://inyccwww6src" path="res://sprites/general-tileset.tres" id="1_j83ws"]
 
 [node name="Dirt3-1" type="TileMap"]
 position = Vector2(1, 0)
