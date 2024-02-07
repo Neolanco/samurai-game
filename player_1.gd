@@ -59,6 +59,10 @@ func flip_player():
 	$"Sprite_Death".flip_h = velocity.x < 0
 	$"Sprite_Jump".flip_h = velocity.x < 0
 
+func close_game():
+	if Input.is_key_pressed(KEY_ESCAPE):
+		get_tree().quit()
+
 func _physics_process(delta):
 	var move = read_user_input()
 	add_move_x(move, delta)
@@ -68,6 +72,8 @@ func _physics_process(delta):
 	
 	add_gravity(delta)
 	move_and_slide()
+	
+	close_game()
 	
 	game.update(delta)
 
