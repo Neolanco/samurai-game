@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bplbj3sfn2no5"]
+[gd_scene load_steps=51 format=3 uid="uid://bplbj3sfn2no5"]
 
 [ext_resource type="Texture2D" uid="uid://diw4l2nylk1sx" path="res://sprites/crow/Walk/1.PNG" id="1_5j1c5"]
 [ext_resource type="Script" path="res://player_1.gd" id="1_5xx3n"]
@@ -36,6 +36,14 @@
 [ext_resource type="Texture2D" uid="uid://cxeurk7xxbbl2" path="res://sprites/crow_centred/jump/13.PNG" id="33_wjhgl"]
 [ext_resource type="Texture2D" uid="uid://cpaiivcxl0cs7" path="res://sprites/crow_centred/jump/14.PNG" id="34_mbslc"]
 [ext_resource type="Texture2D" uid="uid://cucgeg0hsrkrr" path="res://sprites/crow_centred/jump/15.PNG" id="35_gvnmv"]
+[ext_resource type="Texture2D" uid="uid://c0srgwxrehlse" path="res://sprites/crow_centred/run/1.PNG" id="37_atxcr"]
+[ext_resource type="Texture2D" uid="uid://lhjbeltdthn0" path="res://sprites/crow_centred/run/2.PNG" id="38_wp4d4"]
+[ext_resource type="Texture2D" uid="uid://bkv2s5r4v1vmi" path="res://sprites/crow_centred/run/3.PNG" id="39_tatp4"]
+[ext_resource type="Texture2D" uid="uid://6180wuhh102o" path="res://sprites/crow_centred/run/4.PNG" id="40_xjet7"]
+[ext_resource type="Texture2D" uid="uid://b714unrbfa1xa" path="res://sprites/crow_centred/run/5.PNG" id="41_lvvv8"]
+[ext_resource type="Texture2D" uid="uid://d3lh78v05hcgc" path="res://sprites/crow_centred/run/6.PNG" id="42_rye6l"]
+[ext_resource type="Texture2D" uid="uid://bbpua6kk7qgy4" path="res://sprites/crow_centred/run/7.PNG" id="43_a4ljg"]
+[ext_resource type="Texture2D" uid="uid://dofr4x1c3sed1" path="res://sprites/crow_centred/run/8.PNG" id="44_hy0xi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u1a71"]
 size = Vector2(45, 89)
@@ -177,6 +185,38 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_co63i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("37_atxcr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_wp4d4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_tatp4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_xjet7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_lvvv8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_rye6l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_a4ljg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_hy0xi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
 [node name="Player1" type="CharacterBody2D"]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_5xx3n")
@@ -208,3 +248,9 @@ position = Vector2(13, -7)
 sprite_frames = SubResource("SpriteFrames_wntjj")
 frame = 14
 frame_progress = 1.0
+
+[node name="Sprite_Run" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(17.3333, -57.3333)
+sprite_frames = SubResource("SpriteFrames_co63i")
+frame_progress = 0.26668
