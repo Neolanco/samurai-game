@@ -113,7 +113,7 @@ func start_animation(sprite):
 
 func add_animation(delta):
 	is_jumping_since += delta
-	if velocity.y < 0:
+	if !is_on_floor():
 		start_animation($Sprite_Jump)
 		is_jumping_since = 0
 		return
