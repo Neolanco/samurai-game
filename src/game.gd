@@ -99,12 +99,12 @@ func _get_most_right_position(node: TileMap):
 
 func update(_delta):
 	# must be before generate_platform and offset must be less than generate_platform
-	if _player.global_position.y > _last_node.global_position.y + 1200:
+	if _player.global_position.y > _last_node.global_position.y + 3600:
 		kill_player()
 	
 	# must be after kill_player anf offset must be more than kill_player
 	var pos = _player.global_position
-	if _first_pos.x < pos.x - 1000 || _first_pos.y < pos.y - 1000 || _first_pos.y > pos.y + 1000:
+	if _first_pos.x < pos.x - 3000 || _first_pos.y < pos.y - 3000 || _first_pos.y > pos.y + 3000:
 		var platform = _loaded_platforms.pop_front()
 		_main.remove_child(platform)
 		platform.queue_free()
@@ -117,6 +117,6 @@ func kill_player():
 	_player.global_position = Vector2(0, 0)
 	_player.time = 0
 	_player.score = 0
-	# _player.velocity = Vector2(0, 0)
+	_player.velocity.x = 0
 	clear_platforms()
 	init_platforms()

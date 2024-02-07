@@ -23,9 +23,12 @@ var time: float = 0
 @onready
 var sprites = [$Sprite_Idle, $Sprite_Walking, $Sprite_Jump, $Sprite_Run]
 var is_jumping_since: float = 0
+var can_move = true
 
 func read_user_input():
 	var move = Vector2i(0, 0)
+	if !can_move:
+		return move
 	if Input.is_key_pressed(KEY_W) || Input.is_key_pressed(KEY_UP) || Input.is_key_pressed(KEY_SPACE):
 		move.y -= 1
 	if Input.is_key_pressed(KEY_A) || Input.is_key_pressed(KEY_LEFT):
@@ -163,7 +166,7 @@ func _ready():
 	# Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _main_ready():
-	game.register_platform("res://platforms/smb1-1.tscn", 0.001)
+	game.register_platform("res://platforms/smb1-1.tscn", 0.01)
 	game.register_platform("res://platforms/dirt6-1.tscn", 1)
 	game.register_platform("res://platforms/dirt5-1.tscn", 1)
 	game.register_platform("res://platforms/dirt4-1.tscn", 1)
