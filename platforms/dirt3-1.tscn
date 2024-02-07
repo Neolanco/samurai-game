@@ -485,7 +485,7 @@ tile_size = Vector2i(70, 70)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_xeh22")
 
-[node name="Dirt3-1" type="TileMap"]
+[node name="Dirt3-2" type="TileMap"]
 tile_set = SubResource("TileSet_76r86")
 rendering_quadrant_size = 70
 format = 2

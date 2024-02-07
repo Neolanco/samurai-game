@@ -108,6 +108,7 @@ func update(_delta):
 
 func kill_player():
 	_player.global_position = _start_pos
+	_player.time = 0
 	# _player.velocity = Vector2(0, 0)
 	clear_platforms()
 	init_platforms()

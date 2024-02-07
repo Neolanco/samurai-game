@@ -9,3 +9,13 @@ script = ExtResource("1_3byd7")
 
 [node name="Player1" parent="." instance=ExtResource("1_kn2ah")]
 script = ExtResource("2_acgtg")
+
+[node name="Camera2D2" type="Camera2D" parent="Player1"]
+
+[node name="ScoreLabel" type="Label" parent="Player1/Camera2D2"]
+offset_left = 260.0
+offset_top = -318.0
+offset_right = 570.0
+offset_bottom = -288.0
+text = "Test"
+horizontal_alignment = 2

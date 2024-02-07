@@ -12,11 +12,15 @@ const SLIDE = 0.2 # between 0 and 1
 # other
 const START_POS = Vector2(90, -200)
 const JUMP_AFTER_PLATFORM = 0.1
+const SCORE_FACTOR = 0.002
 
 var main
 var game
 var floating_seconds: float = 0.0
 var jump_hold = false
+var score: int = 0
+var high_score: int = 0
+var time: float = 0
 
 func read_user_input():
 	var move = Vector2i(0, 0)
@@ -85,6 +89,14 @@ func close_game():
 	if Input.is_key_pressed(KEY_ESCAPE):
 		get_tree().quit()
 
+func update_score(delta):
+	time += delta
+	if $".".global_position.x > score:
+		score = int($".".global_position.x * SCORE_FACTOR)
+		if score > high_score:
+			high_score = score
+	$Camera2D2/ScoreLabel.text = "High-Score: " + str(high_score) + "\nScore: " + str(score) + "\n Time: " + str(int(time)) + " sec"
+
 func _physics_process(delta):
 	var move = read_user_input()
 	add_move_x(move, delta)
@@ -98,6 +110,8 @@ func _physics_process(delta):
 	close_game()
 	
 	game.update(delta)
+	
+	update_score(delta)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
