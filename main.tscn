@@ -11,9 +11,9 @@ script = ExtResource("1_3byd7")
 [node name="Camera2D2" type="Camera2D" parent="Player1"]
 
 [node name="ScoreLabel" type="Label" parent="Player1/Camera2D2"]
-offset_left = 260.0
-offset_top = -318.0
-offset_right = 570.0
-offset_bottom = -288.0
+offset_left = 56.0
+offset_top = -190.0
+offset_right = 366.0
+offset_bottom = -160.0
 text = "Test"
 horizontal_alignment = 2
