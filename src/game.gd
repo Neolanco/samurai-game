@@ -117,6 +117,6 @@ func kill_player():
 	_player.global_position = Vector2(0, 0)
 	_player.time = 0
 	_player.score = 0
-	# _player.velocity = Vector2(0, 0)
+	_player.velocity.x = 0
 	clear_platforms()
 	init_platforms()
