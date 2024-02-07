@@ -1,18 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://csvhfk8ckmvr0"]
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://curtu215lbuqg"]
 
-[ext_resource type="Script" path="res://titlescreen.gd" id="1_xus21"]
-[ext_resource type="Texture2D" uid="uid://wosbsq2yir2f" path="res://sprites/tiles_spritesheet.png" id="1_ygte5"]
-[ext_resource type="PackedScene" uid="uid://dnopqbshnc0jx" path="res://player_dummy.tscn" id="2_rnf7f"]
-[ext_resource type="Texture2D" uid="uid://i0yr8p2bwg2h" path="res://refrences/cave backgrounds/grey_L1.png" id="4_hvbxn"]
-[ext_resource type="Texture2D" uid="uid://ds53dgsr1fnj0" path="res://refrences/cave backgrounds/grey_L2.png" id="5_hdlcj"]
-[ext_resource type="Texture2D" uid="uid://dot8eo665aeqq" path="res://refrences/2D lighting tutorial/light.png" id="5_oljv4"]
-[ext_resource type="Texture2D" uid="uid://d1vscsvcv6gye" path="res://refrences/cave backgrounds/grey_L3.png" id="6_oiuuu"]
-[ext_resource type="Texture2D" uid="uid://c6nyl6n6xyn2f" path="res://refrences/cave backgrounds/grey_L4.png" id="7_4fv0y"]
-[ext_resource type="Theme" uid="uid://l2kuag675c7k" path="res://general theme.tres" id="9_0jkfe"]
-[ext_resource type="PackedScene" uid="uid://buv03lchlewpy" path="res://Torch.tscn" id="9_u3cns"]
+[ext_resource type="Texture2D" uid="uid://wosbsq2yir2f" path="res://sprites/tiles_spritesheet.png" id="1_4mgh1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_souv5"]
-texture = ExtResource("1_ygte5")
+texture = ExtResource("1_4mgh1")
 separation = Vector2i(2, 2)
 texture_region_size = Vector2i(70, 70)
 0:0/0 = 0
@@ -285,6 +276,7 @@ texture_region_size = Vector2i(70, 70)
 0:6/0 = 0
 0:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:6/0/physics_layer_0/angular_velocity = 0.0
+0:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-35, -35, 35, -35, 35, 35, -35, 35)
 0:7/0 = 0
 0:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:7/0/physics_layer_0/angular_velocity = 0.0
@@ -388,6 +380,7 @@ texture_region_size = Vector2i(70, 70)
 7:10/0 = 0
 7:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:10/0/physics_layer_0/angular_velocity = 0.0
+7:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-35, -35, 35, -35, 35, 35, -35, 35)
 8:10/0 = 0
 8:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:10/0/physics_layer_0/angular_velocity = 0.0
@@ -404,6 +397,7 @@ texture_region_size = Vector2i(70, 70)
 7:11/0 = 0
 7:11/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:11/0/physics_layer_0/angular_velocity = 0.0
+7:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-35, -35, 35, -35, 35, 35, -35, 35)
 8:11/0 = 0
 8:11/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:11/0/physics_layer_0/angular_velocity = 0.0
@@ -488,80 +482,11 @@ texture_region_size = Vector2i(70, 70)
 10:12/0 = 0
 10:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 10:12/0/physics_layer_0/angular_velocity = 0.0
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
 
-[sub_resource type="TileSet" id="TileSet_wecbi"]
+[resource]
 tile_size = Vector2i(70, 70)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_souv5")
-
-[node name="Titlescreen" type="Node2D"]
-script = ExtResource("1_xus21")
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
-color = Color(0.356863, 0.447059, 0.494118, 1)
-
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_wecbi")
-format = 2
-layer_0/tile_data = PackedInt32Array(327680, 458752, 8, 327681, 458752, 8, 327682, 458752, 8, 327683, 458752, 8, 327684, 524288, 7, 393220, 524288, 268435464, 393219, 524288, 12, 393218, 458752, 7, 393217, 524288, 12, 393216, 458752, 7, 458751, 524288, 12, 393215, 458752, 8)
-
-[node name="Player_dummy" parent="." instance=ExtResource("2_rnf7f")]
-z_index = 4
-position = Vector2(50, 286.57)
-
-[node name="PointLight2D" type="PointLight2D" parent="Player_dummy"]
-energy = 0.5
-texture = ExtResource("5_oljv4")
-texture_scale = 0.6
-
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-zoom = Vector2(2.5, 2.5)
-limit_left = 0
-limit_top = 0
-
-[node name="GreyL1" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(423, 218.75)
-scale = Vector2(1.5, 1.75)
-texture = ExtResource("4_hvbxn")
-
-[node name="GreyL2" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(423, 218.75)
-scale = Vector2(1.5, 1.75)
-texture = ExtResource("5_hdlcj")
-
-[node name="GreyL3" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(423, 218.75)
-scale = Vector2(1.5, 1.75)
-texture = ExtResource("6_oiuuu")
-
-[node name="GreyL4" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(423, 218.75)
-scale = Vector2(1.5, 1.75)
-texture = ExtResource("7_4fv0y")
-
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="BTNstart" type="Button" parent="UI"]
-layout_mode = 0
-offset_left = 560.0
-offset_top = 296.0
-offset_right = 716.0
-offset_bottom = 340.0
-theme = ExtResource("9_0jkfe")
-text = "Start Game!"
-
-[node name="Torch" parent="." instance=ExtResource("9_u3cns")]
-position = Vector2(268, 317)
-scale = Vector2(2.09375, 2.09375)
-
-[connection signal="pressed" from="UI/BTNstart" to="." method="_on_BTNstart_pressed"]
