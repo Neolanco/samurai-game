@@ -2,12 +2,12 @@ extends CharacterBody2D
 
 # some consts
 # y
-const JUMP_VELOCITY = -600.0
-const AIR_JUMP_VELOCITY = -400.0
-const GRAVITY = 1600
+const JUMP_VELOCITY = -900.0
+const AIR_JUMP_VELOCITY = -600.0
+const GRAVITY = 2400
 # x
-const MAX_VELOCITY = Vector2(500, 1000)
-const ACCELERATION = 30.0
+const MAX_VELOCITY = Vector2(700, 1000)
+const ACCELERATION = 60.0
 const SLIDE = 0.2 # between 0 and 1
 # other
 const START_POS = Vector2(90, -200)
