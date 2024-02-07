@@ -1,13 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://csvhfk8ckmvr0"]
+[gd_scene load_steps=13 format=3 uid="uid://csvhfk8ckmvr0"]
 
 [ext_resource type="Script" path="res://titlescreen.gd" id="1_xus21"]
 [ext_resource type="Texture2D" uid="uid://wosbsq2yir2f" path="res://sprites/tiles_spritesheet.png" id="1_ygte5"]
 [ext_resource type="PackedScene" uid="uid://dnopqbshnc0jx" path="res://player_dummy.tscn" id="2_rnf7f"]
-[ext_resource type="Texture2D" uid="uid://c1gcib48mmo8b" path="res://refrences/cave backgrounds/grey_L1.png" id="4_hvbxn"]
-[ext_resource type="Texture2D" uid="uid://7mlskonmeqmh" path="res://refrences/cave backgrounds/grey_L2.png" id="5_hdlcj"]
-[ext_resource type="Texture2D" uid="uid://7x688prdpe8n" path="res://refrences/cave backgrounds/grey_L3.png" id="6_oiuuu"]
-[ext_resource type="Texture2D" uid="uid://b2qceksc4e00m" path="res://refrences/cave backgrounds/grey_L4.png" id="7_4fv0y"]
-[ext_resource type="Texture2D" uid="uid://dscadfrj8w10f" path="res://sprites/general-masks/shadow.png" id="8_ntpad"]
+[ext_resource type="Texture2D" uid="uid://gyfnklba5bvu" path="res://refrences/cave backgrounds/grey_L1.png" id="4_hvbxn"]
+[ext_resource type="Texture2D" uid="uid://bjpcb421mk7vh" path="res://refrences/cave backgrounds/grey_L2.png" id="5_hdlcj"]
+[ext_resource type="Texture2D" uid="uid://dnoxaphbfqf0l" path="res://refrences/2D lighting tutorial/light.png" id="5_oljv4"]
+[ext_resource type="Texture2D" uid="uid://2a08sm62xvhh" path="res://refrences/cave backgrounds/grey_L3.png" id="6_oiuuu"]
+[ext_resource type="Texture2D" uid="uid://ojs3lgeuqtq0" path="res://refrences/cave backgrounds/grey_L4.png" id="7_4fv0y"]
+[ext_resource type="Theme" uid="uid://l2kuag675c7k" path="res://general theme.tres" id="9_0jkfe"]
 [ext_resource type="PackedScene" uid="uid://buv03lchlewpy" path="res://Torch.tscn" id="9_u3cns"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_souv5"]
@@ -507,27 +508,12 @@ layer_0/tile_data = PackedInt32Array(327680, 458752, 8, 327681, 458752, 8, 32768
 
 [node name="Player_dummy" parent="." instance=ExtResource("2_rnf7f")]
 z_index = 4
-position = Vector2(49.9995, 307)
+position = Vector2(50, 286.57)
 
 [node name="PointLight2D" type="PointLight2D" parent="Player_dummy"]
-position = Vector2(11, 71)
-scale = Vector2(2, 1.74805)
-energy = 0.25
-texture = ExtResource("8_ntpad")
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Player_dummy"]
-visible = false
-energy = 1.05
-range_z_min = -1
-range_z_max = -1
-
-[node name="PointLight2D2" type="PointLight2D" parent="Player_dummy"]
-visible = false
-light_mask = 2
-position = Vector2(7, 91)
-scale = Vector2(2.5, 8.65283)
-energy = 0.25
-texture = ExtResource("8_ntpad")
+energy = 0.5
+texture = ExtResource("5_oljv4")
+texture_scale = 0.6
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -567,11 +553,12 @@ offset_bottom = 40.0
 
 [node name="BTNstart" type="Button" parent="UI"]
 layout_mode = 0
-offset_left = 291.0
-offset_top = 197.0
-offset_right = 447.0
-offset_bottom = 281.0
-text = "Start brooooooooooo"
+offset_left = 560.0
+offset_top = 296.0
+offset_right = 716.0
+offset_bottom = 340.0
+theme = ExtResource("9_0jkfe")
+text = "Start Game!"
 
 [node name="Torch" parent="." instance=ExtResource("9_u3cns")]
 position = Vector2(268, 317)
