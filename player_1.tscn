@@ -36,14 +36,14 @@
 [ext_resource type="Texture2D" uid="uid://cxeurk7xxbbl2" path="res://sprites/crow_centred/jump/13.PNG" id="33_wjhgl"]
 [ext_resource type="Texture2D" uid="uid://cpaiivcxl0cs7" path="res://sprites/crow_centred/jump/14.PNG" id="34_mbslc"]
 [ext_resource type="Texture2D" uid="uid://cucgeg0hsrkrr" path="res://sprites/crow_centred/jump/15.PNG" id="35_gvnmv"]
-[ext_resource type="Texture2D" uid="uid://c0srgwxrehlse" path="res://sprites/crow_centred/run/1.PNG" id="37_atxcr"]
-[ext_resource type="Texture2D" uid="uid://lhjbeltdthn0" path="res://sprites/crow_centred/run/2.PNG" id="38_wp4d4"]
-[ext_resource type="Texture2D" uid="uid://bkv2s5r4v1vmi" path="res://sprites/crow_centred/run/3.PNG" id="39_tatp4"]
-[ext_resource type="Texture2D" uid="uid://6180wuhh102o" path="res://sprites/crow_centred/run/4.PNG" id="40_xjet7"]
-[ext_resource type="Texture2D" uid="uid://b714unrbfa1xa" path="res://sprites/crow_centred/run/5.PNG" id="41_lvvv8"]
-[ext_resource type="Texture2D" uid="uid://d3lh78v05hcgc" path="res://sprites/crow_centred/run/6.PNG" id="42_rye6l"]
-[ext_resource type="Texture2D" uid="uid://bbpua6kk7qgy4" path="res://sprites/crow_centred/run/7.PNG" id="43_a4ljg"]
-[ext_resource type="Texture2D" uid="uid://dofr4x1c3sed1" path="res://sprites/crow_centred/run/8.PNG" id="44_hy0xi"]
+[ext_resource type="Texture2D" uid="uid://djgrjfeyg8pvc" path="res://sprites/crow_centred/run/1.PNG" id="37_atxcr"]
+[ext_resource type="Texture2D" uid="uid://d4bu1aee4sfli" path="res://sprites/crow_centred/run/2.PNG" id="38_wp4d4"]
+[ext_resource type="Texture2D" uid="uid://bh0xblmspmucw" path="res://sprites/crow_centred/run/3.PNG" id="39_tatp4"]
+[ext_resource type="Texture2D" uid="uid://c0aohapnc47x8" path="res://sprites/crow_centred/run/4.PNG" id="40_xjet7"]
+[ext_resource type="Texture2D" uid="uid://cnnwpbw5regdj" path="res://sprites/crow_centred/run/5.PNG" id="41_lvvv8"]
+[ext_resource type="Texture2D" uid="uid://db8urry5wr0iy" path="res://sprites/crow_centred/run/6.PNG" id="42_rye6l"]
+[ext_resource type="Texture2D" uid="uid://jenogb8aykd0" path="res://sprites/crow_centred/run/7.PNG" id="43_a4ljg"]
+[ext_resource type="Texture2D" uid="uid://ch8xr57hhjn1n" path="res://sprites/crow_centred/run/8.PNG" id="44_hy0xi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u1a71"]
 size = Vector2(45, 89)
@@ -218,6 +218,7 @@ animations = [{
 }]
 
 [node name="Player1" type="CharacterBody2D"]
+z_index = 1
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_5xx3n")
 
