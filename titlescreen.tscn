@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://titlescreen.gd" id="1_xus21"]
 [ext_resource type="Texture2D" uid="uid://wosbsq2yir2f" path="res://sprites/tiles_spritesheet.png" id="1_ygte5"]
 [ext_resource type="PackedScene" uid="uid://dnopqbshnc0jx" path="res://player_dummy.tscn" id="2_rnf7f"]
-[ext_resource type="Texture2D" uid="uid://gyfnklba5bvu" path="res://refrences/cave backgrounds/grey_L1.png" id="4_hvbxn"]
-[ext_resource type="Texture2D" uid="uid://bjpcb421mk7vh" path="res://refrences/cave backgrounds/grey_L2.png" id="5_hdlcj"]
-[ext_resource type="Texture2D" uid="uid://2a08sm62xvhh" path="res://refrences/cave backgrounds/grey_L3.png" id="6_oiuuu"]
-[ext_resource type="Texture2D" uid="uid://ojs3lgeuqtq0" path="res://refrences/cave backgrounds/grey_L4.png" id="7_4fv0y"]
-[ext_resource type="Texture2D" uid="uid://dd353hmojglcs" path="res://sprites/general-masks/shadow.png" id="8_ntpad"]
+[ext_resource type="Texture2D" uid="uid://cjf4hw1xtauxl" path="res://refrences/cave backgrounds/grey_L1.png" id="4_hvbxn"]
+[ext_resource type="Texture2D" uid="uid://6eopn1tfmyrd" path="res://refrences/cave backgrounds/grey_L2.png" id="5_hdlcj"]
+[ext_resource type="Texture2D" uid="uid://c1swe5ooorgoo" path="res://refrences/cave backgrounds/grey_L3.png" id="6_oiuuu"]
+[ext_resource type="Texture2D" uid="uid://rtq4nr7ubkbf" path="res://refrences/cave backgrounds/grey_L4.png" id="7_4fv0y"]
+[ext_resource type="Texture2D" uid="uid://bjgajxeuv25ek" path="res://sprites/general-masks/shadow.png" id="8_ntpad"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_souv5"]
 texture = ExtResource("1_ygte5")

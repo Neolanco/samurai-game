@@ -144,6 +144,7 @@ func _ready():
 
 func _main_ready():
 	game.register_platform("res://platforms/dirt3-1.tscn")
+	game.register_platform("res://platforms/dirt2-1.tscn")
 	game.register_platform("res://platforms/dirt1-1.tscn")
 	game.init_platforms()
 	$".".global_position = START_POS
