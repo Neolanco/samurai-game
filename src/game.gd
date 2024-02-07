@@ -67,8 +67,19 @@ func generate_platform():
 		_first_pos = node.global_position + _get_most_right_position(node)
 	else:
 		# load random node
-		var index = _rng.randi_range(0, _aviable_platforms.size() - 1)
-		var node: TileMap = load(_aviable_platforms[index].platform).instantiate()
+		var max_number = 0
+		for p in _aviable_platforms:
+			max_number += p.proboeirghio3etry
+		var random_number = randf_range(0, max_number)
+		var platform = _aviable_platforms[0].platform
+		var current_p = 0
+		for p in _aviable_platforms:
+			current_p += p.proboeirghio3etry
+			#print("p: " + str(p.proboeirghio3etry) + " max: " + str(max_number) + " random: " + str(random_number) + " current_p: " + str(current_p))
+			if random_number < current_p:
+				platform = p.platform
+				break
+		var node: TileMap = load(platform).instantiate()
 		
 		# new platform pos without jump
 		node.global_position = _get_most_right_position(_last_node) + _last_node.global_position
@@ -80,9 +91,10 @@ func generate_platform():
 		_loaded_platforms.append(node)
 		_main.add_child(node)
 		_last_node = node
+		# print(platform)
 
-func register_platform(platform: String):
-	_aviable_platforms.append(Platform.new(platform))
+func register_platform(platform: String, proboeirghio3etry: float):
+	_aviable_platforms.append(Platform.new(platform, proboeirghio3etry))
 
 # local
 func _get_most_right_position(node: TileMap):
