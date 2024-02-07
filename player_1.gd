@@ -21,6 +21,9 @@ var jump_hold = false
 var score: int = 0
 var high_score: int = 0
 var time: float = 0
+@onready
+var sprites = [$Sprite_Idle, $Sprite_Walking, $Sprite_Jump, $Sprite_Run]
+var is_jumping_since: float = 0
 
 func read_user_input():
 	var move = Vector2i(0, 0)
@@ -85,10 +88,6 @@ func flip_player():
 	$"Sprite_Death".flip_h = velocity.x < 0
 	$"Sprite_Jump".flip_h = velocity.x < 0
 
-func close_game():
-	if Input.is_key_pressed(KEY_ESCAPE):
-		get_tree().quit()
-
 func update_score(delta):
 	time += delta
 	if $".".global_position.x * SCORE_FACTOR > score:
@@ -103,6 +102,40 @@ func print_pos():
 		last_pos = $".".global_position
 		print("playerpos x: " + str($".".global_position.x) + ", y: " + str($".".global_position.y))
 
+func start_animation(sprite):
+	if sprite.is_playing():
+		return
+	for s in sprites:
+		s.visible = false
+		s.stop()
+	sprite.visible = true
+	sprite.play()
+
+func add_animation(delta):
+	is_jumping_since += delta
+	if velocity.y < 0:
+		start_animation($Sprite_Jump)
+		is_jumping_since = 0
+		return
+	
+	if is_jumping_since < 0.1:
+		return
+	
+	# Changes the animation based on velocity
+	if abs(velocity.x) > 0:
+		if $Sprite_Walking.is_visible() || $Sprite_Run.is_visible():
+			pass
+		elif abs(velocity.x) == (MAX_VELOCITY.x):
+			start_animation($Sprite_Run)
+		else:
+			start_animation($Sprite_Walking)
+		return
+		
+	if $Sprite_Idle.is_visible():
+		pass
+	else:
+		start_animation($Sprite_Idle)
+
 func _physics_process(delta):
 	var move = read_user_input()
 	add_move_x(move, delta)
@@ -113,52 +146,9 @@ func _physics_process(delta):
 	add_gravity(delta)
 	move_and_slide()
 	
-	close_game()
-	
 	game.update(delta)
 	
-	if abs(velocity.y) > 0:
-		$Sprite_Idle.visible = false
-		$Sprite_Walking.visible = false
-		$Sprite_Jump.visible = true
-		$Sprite_Walking.stop()
-		$Sprite_Idle.stop()
-		$Sprite_Jump.play()
-	
-	# Changes the animation based on velocity
-	else:
-		if abs(velocity.x) > 0:
-			if $Sprite_Walking.is_visible() || $Sprite_Run.is_visible():
-				pass
-			elif abs(velocity.x) == (MAX_VELOCITY.x):
-				$Sprite_Idle.visible = false
-				$Sprite_Walking.visible = false              
-				$Sprite_Jump.visible = false
-				$Sprite_Run.visible = true
-				$Sprite_Walking.stop()
-				$Sprite_Idle.stop()
-				$Sprite_Jump.stop()
-				$Sprite_Run.play()
-			elif abs(velocity.x) != (MAX_VELOCITY.x):
-				$Sprite_Idle.visible = false
-				$Sprite_Walking.visible = true
-				$Sprite_Jump.visible = false
-				$Sprite_Run.visible = false
-				$Sprite_Walking.stop()
-				$Sprite_Idle.stop()
-				$Sprite_Jump.stop()
-				$Sprite_Run.stop ()
-		else:
-			if $Sprite_Idle.is_visible():
-				pass
-			else:
-				$Sprite_Idle.visible = true
-				$Sprite_Walking.visible = false
-				$Sprite_Jump.visible = false
-				$Sprite_Walking.stop()
-				$Sprite_Idle.play()
-				$Sprite_Jump.stop()
-			
+	add_animation(delta)
 	
 	update_score(delta)
 	
