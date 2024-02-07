@@ -506,7 +506,6 @@ layer_0/tile_data = PackedInt32Array(327680, 458752, 8, 327681, 458752, 8, 32768
 [node name="Player_dummy" parent="." instance=ExtResource("2_rnf7f")]
 z_index = 4
 position = Vector2(49.9995, 307)
-scale = Vector2(1, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="Player_dummy"]
 position = Vector2(11, 71)
@@ -529,6 +528,7 @@ energy = 0.25
 texture = ExtResource("8_ntpad")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
 zoom = Vector2(1.5, 1.5)
 limit_left = 0
 limit_top = 0
