@@ -91,7 +91,7 @@ func close_game():
 
 func update_score(delta):
 	time += delta
-	if $".".global_position.x > score:
+	if $".".global_position.x * SCORE_FACTOR > score:
 		score = int($".".global_position.x * SCORE_FACTOR)
 		if score > high_score:
 			high_score = score
@@ -163,9 +163,9 @@ func _ready():
 	# Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _main_ready():
-	game.register_platform("res://platforms/smb1-1.tscn")
-	game.register_platform("res://platforms/dirt3-1.tscn")
-	game.register_platform("res://platforms/dirt2-1.tscn")
-	game.register_platform("res://platforms/dirt1-1.tscn")
+	game.register_platform("res://platforms/smb1-1.tscn", 0.001)
+	game.register_platform("res://platforms/dirt3-1.tscn", 1)
+	game.register_platform("res://platforms/dirt2-1.tscn", 1)
+	game.register_platform("res://platforms/dirt1-1.tscn", 1)
 	game.init_platforms()
 	$".".global_position = START_POS
