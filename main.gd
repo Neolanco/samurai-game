@@ -12,5 +12,6 @@ func close_game():
 		get_tree().quit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(delta): 
 	close_game()
+	
