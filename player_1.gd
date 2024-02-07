@@ -10,7 +10,6 @@ const MAX_VELOCITY = Vector2(700, 1000)
 const ACCELERATION = 60.0
 const SLIDE = 0.2 # between 0 and 1
 # other
-const START_POS = Vector2(90, -200)
 const JUMP_AFTER_PLATFORM = 0.1
 const SCORE_FACTOR = 0.002
 
@@ -158,7 +157,7 @@ func _ready():
 	main = get_tree().get_root().get_node("Main")
 	main.connect("main_ready", _main_ready)
 	# init game ass
-	game = Game.new(main, $".", START_POS)
+	game = Game.new(main, $".")
 	# hide mouse cursor
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	# Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -169,4 +168,4 @@ func _main_ready():
 	game.register_platform("res://platforms/dirt2-1.tscn", 1)
 	game.register_platform("res://platforms/dirt1-1.tscn", 1)
 	game.init_platforms()
-	$".".global_position = START_POS
+	$".".global_position = Vector2(0, 0)

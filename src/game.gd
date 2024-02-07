@@ -1,7 +1,7 @@
 class_name Game
 
 # consts
-const JUMP_DISTANCE = Vector2(450, 100)
+const JUMP_DISTANCE = Vector2(600, 300)
 const MIN_JUMP_DISTANCE = Vector2(200.0, 50.0)
 const RANDOM_JUMP_DISTANCE = true
 
@@ -10,17 +10,13 @@ var _aviable_platforms: Array[Platform]
 var _rng: RandomNumberGenerator
 var _main
 var _player
-var _start_pos # player start_pos
-# platform init_pos
-# var _init_pos const 0 0
 
 var _last_node: TileMap
 var _first_pos: Vector2
 
-func _init(main: Node2D, player: CharacterBody2D, start_pos: Vector2):
+func _init(main: Node2D, player: CharacterBody2D):
 	_main = main
 	_player = player
-	_start_pos = start_pos
 	
 	_rng = RandomNumberGenerator.new()
 	_rng.randomize()
@@ -34,7 +30,7 @@ func clear_platforms():
 		var platform = _loaded_platforms.pop_back()
 		_main.remove_child(platform)
 		platform.queue_free()
-		_last_node = null
+	_last_node = null
 
 func get_random_jump_vector():
 	var x
@@ -55,43 +51,35 @@ func get_random_jump_vector():
 	return Vector2(x, y)
 
 func generate_platform():
-	if _loaded_platforms.size() == 0:
-		# load first platform
-		var node: TileMap = load(_aviable_platforms[0].platform).instantiate()
-		node.global_position = Vector2(0, 0)
-		
-		# add platform (node)
-		_loaded_platforms.append(node)
-		_main.add_child(node)
-		_last_node = node
-		_first_pos = node.global_position + _get_most_right_position(node)
-	else:
-		# load random node
-		var max_number = 0
-		for p in _aviable_platforms:
-			max_number += p.proboeirghio3etry
-		var random_number = randf_range(0, max_number)
-		var platform = _aviable_platforms[0].platform
-		var current_p = 0
-		for p in _aviable_platforms:
-			current_p += p.proboeirghio3etry
-			#print("p: " + str(p.proboeirghio3etry) + " max: " + str(max_number) + " random: " + str(random_number) + " current_p: " + str(current_p))
-			if random_number < current_p:
-				platform = p.platform
-				break
-		var node: TileMap = load(platform).instantiate()
-		
-		# new platform pos without jump
+	# load random node
+	var max_number = 0
+	for p in _aviable_platforms:
+		max_number += p.proboeirghio3etry
+	var random_number = randf_range(0, max_number)
+	var platform = _aviable_platforms[0].platform
+	var current_p = 0
+	for p in _aviable_platforms:
+		current_p += p.proboeirghio3etry
+		#print("p: " + str(p.proboeirghio3etry) + " max: " + str(max_number) + " random: " + str(random_number) + " current_p: " + str(current_p))
+		if random_number < current_p:
+			platform = p.platform
+			break
+	var node: TileMap = load(platform).instantiate()
+	
+	# new platform pos without jump
+	if _last_node:
 		node.global_position = _get_most_right_position(_last_node) + _last_node.global_position
-		
-		# apply jump
-		node.global_position += get_random_jump_vector()
-		
-		# add platform (node)
-		_loaded_platforms.append(node)
-		_main.add_child(node)
-		_last_node = node
-		# print(platform)
+	else:
+		node.global_position = Vector2(-500, 300)
+	
+	# apply jump
+	node.global_position += get_random_jump_vector()
+	
+	# add platform (node)
+	_loaded_platforms.append(node)
+	_main.add_child(node)
+	_last_node = node
+	# print(platform)
 
 func register_platform(platform: String, proboeirghio3etry: float):
 	_aviable_platforms.append(Platform.new(platform, proboeirghio3etry))
@@ -125,7 +113,7 @@ func update(_delta):
 
 func kill_player():
 	# _player.get_tree().quit()
-	_player.global_position = _start_pos
+	_player.global_position = Vector2(0, 0)
 	_player.time = 0
 	_player.score = 0
 	# _player.velocity = Vector2(0, 0)

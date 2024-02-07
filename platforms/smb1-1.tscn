@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dm0ntv7ncj63v"]
 
 [ext_resource type="Texture2D" uid="uid://wosbsq2yir2f" path="res://sprites/tiles_spritesheet.png" id="1_bkuux"]
-[ext_resource type="Texture2D" uid="uid://0e8tcumtfk05" path="res://refrences/SuperMarioBrosMap1-1.png" id="2_jguac"]
+[ext_resource type="Texture2D" uid="uid://wqnm67y6jgip" path="res://refrences/SuperMarioBrosMap1-1.png" id="2_jguac"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xeh22"]
 texture = ExtResource("1_bkuux")
