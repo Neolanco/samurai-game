@@ -572,4 +572,4 @@ offset_right = 447.0
 offset_bottom = 281.0
 text = "Start brooooooooooo"
 
-[connection signal="pressed" from="UI/BTNstart" to="." method="_on_bt_nstart_pressed"]
+[connection signal="pressed" from="UI/BTNstart" to="." method="_on_BTNstart_pressed"]

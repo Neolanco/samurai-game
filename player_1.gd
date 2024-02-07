@@ -111,6 +111,24 @@ func _physics_process(delta):
 	
 	game.update(delta)
 	
+	if abs(velocity.x) > 0:
+		if $Sprite_Walking.is_visible():
+			pass
+		else:
+			$Sprite_Idle.visible = false
+			$Sprite_Walking.visible = true
+			$Sprite_Walking.play()
+			$Sprite_Idle.stop()
+	else:
+		if $Sprite_Idle.is_playing():
+			pass
+		else:
+			$Sprite_Idle.visible = true
+			$Sprite_Walking.visible = false
+			$Sprite_Walking.stop()
+			$Sprite_Idle.play()
+		
+	
 	update_score(delta)
 
 # Called when the node enters the scene tree for the first time.

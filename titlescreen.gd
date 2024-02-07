@@ -13,7 +13,8 @@ func _process(delta):
 		emit_signal("dummy_start_walk")
 
 
-func _on_bt_nstart_pressed():
+
+func _on_BTNstart_pressed():
 	print('BTNstart pressed')
 	emit_signal("dummy_start_walk")
-	emit_signal("dummy_start_walk")
+	get_tree().change_scene_to_file("res://main.tscn")
