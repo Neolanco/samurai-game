@@ -188,6 +188,7 @@ sprite_frames = SubResource("SpriteFrames_cbhj6")
 frame_progress = 0.632772
 
 [node name="Sprite_Walking" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(3, -1)
 sprite_frames = SubResource("SpriteFrames_7mfx8")
 

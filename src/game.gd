@@ -89,7 +89,11 @@ func _get_most_right_position(node: TileMap):
 	var max_cell = Vector2i(0, 0)
 	for pos in node.get_used_cells(0):
 		if pos.x > max_cell.x:
-			max_cell = pos
+			if pos.x == max_cell.x:
+				if max_cell.y < pos.y:
+					max_cell = pos
+			else:
+				max_cell = pos
 	return node.map_to_local(max_cell) + Vector2(0.5 * node.rendering_quadrant_size, -0.5 * node.rendering_quadrant_size)
 
 func update(_delta):

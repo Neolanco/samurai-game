@@ -49,7 +49,7 @@ func add_move_x(move, delta):
 			velocity.x += (ACCELERATION ** 2) * delta
 		return
 		
-	if velocity.x < MAX_VELOCITY.x:
+	if abs(velocity.x) < MAX_VELOCITY.x:
 		velocity.x += move.x * (ACCELERATION ** 2) * delta
 
 func add_move_y(move, delta):
