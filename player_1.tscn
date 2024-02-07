@@ -1,6 +1,7 @@
-[gd_scene load_steps=41 format=3 uid="uid://bplbj3sfn2no5"]
+[gd_scene load_steps=42 format=3 uid="uid://bplbj3sfn2no5"]
 
 [ext_resource type="Texture2D" uid="uid://diw4l2nylk1sx" path="res://sprites/crow/Walk/1.PNG" id="1_5j1c5"]
+[ext_resource type="Script" path="res://player_1.gd" id="1_5xx3n"]
 [ext_resource type="Texture2D" uid="uid://b5gncipbhu4rv" path="res://sprites/crow_centred/idle1/1.PNG" id="1_ykod0"]
 [ext_resource type="Texture2D" uid="uid://buli42slg74mi" path="res://sprites/crow_centred/idle1/2.PNG" id="2_iu1r7"]
 [ext_resource type="Texture2D" uid="uid://ub2paoq8yxy6" path="res://sprites/crow/Walk/2.PNG" id="2_slwrh"]
@@ -173,10 +174,11 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 8.0
+"speed": 15.0
 }]
 
 [node name="Player1" type="CharacterBody2D"]
+script = ExtResource("1_5xx3n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(12.5, -1.5)
