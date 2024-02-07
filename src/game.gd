@@ -1,7 +1,7 @@
 class_name Game
 
 # consts
-const JUMP_DISTANCE = Vector2(500, 100)
+const JUMP_DISTANCE = Vector2(450, 100)
 const MIN_JUMP_DISTANCE = Vector2(200.0, 50.0)
 const RANDOM_JUMP_DISTANCE = true
 
