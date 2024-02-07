@@ -128,15 +128,26 @@ func _physics_process(delta):
 	# Changes the animation based on velocity
 	else:
 		if abs(velocity.x) > 0:
-			if $Sprite_Walking.is_visible():
+			if $Sprite_Walking.is_visible() || $Sprite_Run.is_visible():
 				pass
-			else:
+			elif abs(velocity.x) == (MAX_VELOCITY.x):
+				$Sprite_Idle.visible = false
+				$Sprite_Walking.visible = false              
+				$Sprite_Jump.visible = false
+				$Sprite_Run.visible = true
+				$Sprite_Walking.stop()
+				$Sprite_Idle.stop()
+				$Sprite_Jump.stop()
+				$Sprite_Run.play()
+			elif abs(velocity.x) != (MAX_VELOCITY.x):
 				$Sprite_Idle.visible = false
 				$Sprite_Walking.visible = true
 				$Sprite_Jump.visible = false
-				$Sprite_Walking.play()
+				$Sprite_Run.visible = false
+				$Sprite_Walking.stop()
 				$Sprite_Idle.stop()
 				$Sprite_Jump.stop()
+				$Sprite_Run.stop ()
 		else:
 			if $Sprite_Idle.is_visible():
 				pass
@@ -156,7 +167,7 @@ func _ready():
 	# register _main_ready()
 	main = get_tree().get_root().get_node("Main")
 	main.connect("main_ready", _main_ready)
-	# init game class
+	# init game ass
 	game = Game.new(main, $".", START_POS)
 	# hide mouse cursor
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
