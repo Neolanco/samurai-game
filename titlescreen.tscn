@@ -496,12 +496,13 @@ sources/0 = SubResource("TileSetAtlasSource_souv5")
 script = ExtResource("1_xus21")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.356863, 0.447059, 0.494118, 1)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_wecbi")
 format = 2
-layer_0/tile_data = PackedInt32Array(327680, 458752, 8, 327681, 458752, 8, 327682, 458752, 8, 327683, 458752, 8, 327684, 524288, 7, 393220, 524288, 805306377, 393219, 524288, 12, 393218, 524288, 12, 393217, 524288, 12, 393216, 524288, 12, 458751, 524288, 12, 393215, 458752, 8)
+layer_0/tile_data = PackedInt32Array(327680, 458752, 8, 327681, 458752, 8, 327682, 458752, 8, 327683, 458752, 8, 327684, 524288, 7, 393220, 524288, 268435464, 393219, 524288, 12, 393218, 458752, 7, 393217, 524288, 12, 393216, 458752, 7, 458751, 524288, 12, 393215, 458752, 8)
 
 [node name="Player_dummy" parent="." instance=ExtResource("2_rnf7f")]
 z_index = 4
@@ -529,7 +530,7 @@ texture = ExtResource("8_ntpad")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(2.5, 2.5)
 limit_left = 0
 limit_top = 0
 
@@ -556,3 +557,19 @@ z_index = -1
 position = Vector2(423, 218.75)
 scale = Vector2(1.5, 1.75)
 texture = ExtResource("7_4fv0y")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BTNstart" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 291.0
+offset_top = 197.0
+offset_right = 447.0
+offset_bottom = 281.0
+text = "Start brooooooooooo"
+
+[connection signal="pressed" from="UI/BTNstart" to="." method="_on_bt_nstart_pressed"]

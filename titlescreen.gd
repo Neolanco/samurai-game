@@ -6,9 +6,14 @@ signal dummy_start_walk
 func _ready():
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		emit_signal("dummy_start_walk")
+
+
+func _on_bt_nstart_pressed():
+	print('BTNstart pressed')
+	emit_signal("dummy_start_walk")
+	emit_signal("dummy_start_walk")
