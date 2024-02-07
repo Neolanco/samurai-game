@@ -98,6 +98,11 @@ func update_score(delta):
 	$Camera2D2/ScoreLabel.text = "High-Score: " + str(high_score) + "\nScore: " + str(score) + "\n Time: " + str(int(time)) + " sec"
 
 var last_pos = Vector2(0, 0)
+func print_pos():
+	if $".".global_position != last_pos:
+		last_pos = $".".global_position
+		print("playerpos x: " + str($".".global_position.x) + ", y: " + str($".".global_position.y))
+
 func _physics_process(delta):
 	var move = read_user_input()
 	add_move_x(move, delta)
@@ -145,9 +150,6 @@ func _physics_process(delta):
 			
 	
 	update_score(delta)
-	if $".".global_position != last_pos:
-		last_pos = $".".global_position
-		print("playerpos x: " + str($".".global_position.x) + ", y: " + str($".".global_position.y))
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -161,6 +163,7 @@ func _ready():
 	# Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _main_ready():
+	game.register_platform("res://platforms/smb1-1.tscn")
 	game.register_platform("res://platforms/dirt3-1.tscn")
 	game.register_platform("res://platforms/dirt2-1.tscn")
 	game.register_platform("res://platforms/dirt1-1.tscn")

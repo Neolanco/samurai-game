@@ -109,10 +109,10 @@ func update(_delta):
 		platform.queue_free()
 		generate_platform()
 		_first_pos = _loaded_platforms[0].global_position + _get_most_right_position(_loaded_platforms[0])
-		print("_first_pos x: " + str(_first_pos.x) + ", y: " + str(_first_pos.y))
+		# print("_first_pos x: " + str(_first_pos.x) + ", y: " + str(_first_pos.y))
 
 func kill_player():
-	#_player.get_tree().quit()
+	# _player.get_tree().quit()
 	_player.global_position = _start_pos
 	_player.time = 0
 	# _player.velocity = Vector2(0, 0)
