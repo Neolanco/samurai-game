@@ -14,3 +14,7 @@ https://github.com/Neolanco/samurai-game
 - designideen gesammelt
 ### Leon
 - Sprites anpassen und implementieren
+## Tag 2
+### Leon
+- Titlescreen funktionabel machen
+- spritesheet rdy machen
