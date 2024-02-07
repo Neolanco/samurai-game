@@ -496,6 +496,7 @@ sources/0 = SubResource("TileSetAtlasSource_souv5")
 script = ExtResource("1_xus21")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.356863, 0.447059, 0.494118, 1)
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -529,7 +530,7 @@ texture = ExtResource("8_ntpad")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(2.5, 2.5)
 limit_left = 0
 limit_top = 0
 
@@ -556,3 +557,19 @@ z_index = -1
 position = Vector2(423, 218.75)
 scale = Vector2(1.5, 1.75)
 texture = ExtResource("7_4fv0y")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BTNstart" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 291.0
+offset_top = 197.0
+offset_right = 447.0
+offset_bottom = 281.0
+text = "Start brooooooooooo"
+
+[connection signal="pressed" from="UI/BTNstart" to="." method="_on_bt_nstart_pressed"]
