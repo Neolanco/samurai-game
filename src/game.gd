@@ -1,21 +1,21 @@
 class_name Game
 
-const Platform = preload("res://src/platform.gd")
-
 # consts
-const PADDING = Vector2(100.0, 10.0)
+const JUMP_DISTANCE = Vector2(400, 100)
+const MIN_JUMP_DISTANCE = Vector2(200.0, 50.0)
+const RANDOM_JUMP_DISTANCE = true
 
 var _loaded_platforms: Array[Node2D]
 var _aviable_platforms: Array[Platform]
 var _rng: RandomNumberGenerator
 var _main
 var _player
-var _start_pos
+var _start_pos # player start_pos
+# platform init_pos
 # var _init_pos const 0 0
 
-var _velocity: Vector2
 var _last_node: TileMap
-var _jump_distance: Vector2
+var _first_pos: Vector2
 
 func _init(main: Node2D, player: CharacterBody2D, start_pos: Vector2):
 	_main = main
@@ -30,40 +30,25 @@ func init_platforms():
 		generate_platform()
 
 func clear_platforms():
-	for platform in _loaded_platforms:
-		_loaded_platforms.erase(platform)
+	for i in _loaded_platforms.size():
+		var platform = _loaded_platforms.pop_back()
 		_main.remove_child(platform)
 		platform.queue_free()
 		_last_node = null
-		_loaded_platforms = []
-
-func set_jump_distance(speed: float, jump_velocity: float, air_jump_velocity: float, gravity: float):
-	# chat gpt start
-	var max_horizontal_distance = speed * (jump_velocity / gravity)
-	var max_vertical_distance = (jump_velocity * jump_velocity) / (2 * gravity)
-	var max_air_horizontal_distance = speed * (air_jump_velocity / gravity)
-	var max_air_vertical_distance = (air_jump_velocity * air_jump_velocity) / (2 * gravity)
-	
-	var max_x = max(max_horizontal_distance, max_air_horizontal_distance)
-	var max_y = max(max_vertical_distance, max_air_vertical_distance)
-	# chat gpt end
-	
-	_jump_distance = Vector2(abs(max_x), abs(max_y))
 
 func get_random_jump_vector():
-	# check if _jump_distance is lower than PADDING
-	# and if so set it to PADDING
-	# x and y independet from each other
-	if _jump_distance.x < PADDING.x:
-		_jump_distance.x = PADDING.x
-	if _jump_distance.y < PADDING.y:
-		_jump_distance.y = PADDING.y
+	var x
+	var y
 	
-	# generate random numbers
-	var x = _rng.randi_range(PADDING.x, _jump_distance.x)
-	var y = _rng.randi_range(PADDING.y, _jump_distance.y)
+	if !RANDOM_JUMP_DISTANCE:
+		x = JUMP_DISTANCE.x
+		y = JUMP_DISTANCE.y
+	else:
+		# generate random numbers
+		x = _rng.randf_range(MIN_JUMP_DISTANCE.x, JUMP_DISTANCE.x)
+		y = _rng.randf_range(MIN_JUMP_DISTANCE.y, JUMP_DISTANCE.y)
 	
-	# shodt platform be below or above
+	# shoudt platform be below or above
 	if _rng.randf() > 0.5:
 		y = -y
 		
@@ -79,6 +64,7 @@ func generate_platform():
 		_loaded_platforms.append(node)
 		_main.add_child(node)
 		_last_node = node
+		_first_pos = node.global_position
 	else:
 		# load random node
 		var index = _rng.randi_range(0, _aviable_platforms.size() - 1)
@@ -100,26 +86,28 @@ func register_platform(platform: String):
 
 # local
 func _get_most_right_position(node: TileMap):
-	var max = Vector2i(0, 0)
+	var max_cell = Vector2i(0, 0)
 	for pos in node.get_used_cells(0):
-		if pos.x > max.x:
-			max = pos
-	return node.map_to_local(max) + Vector2(0.5 * node.rendering_quadrant_size, -0.5 * node.rendering_quadrant_size)
+		if pos.x > max_cell.x:
+			max_cell = pos
+	return node.map_to_local(max_cell) + Vector2(0.5 * node.rendering_quadrant_size, -0.5 * node.rendering_quadrant_size)
 
-func update(delta):
-	for platform in _loaded_platforms:
-		var pos = _player.global_position
-		if platform.global_position.x < pos.x - 1000 || platform.global_position.y < pos.y - 1000:
-			if platform != _last_node:
-				_loaded_platforms.erase(platform)
-				_main.remove_child(platform)
-				platform.queue_free()
-				generate_platform()
-	
-	if _player.global_position.y > _last_node.global_position.y + 1000:
+func update(_delta):
+	# must be before generate_platform and offset must be less than generate_platform
+	if _player.global_position.y > _last_node.global_position.y + 1200:
 		kill_player()
+	
+	# must be after kill_player anf offset must be more than kill_player
+	var pos = _player.global_position
+	if _first_pos.x < pos.x - 1000 || _first_pos.y < pos.y - 1000 || _first_pos.y > pos.y + 1000:
+		var platform = _loaded_platforms.pop_front()
+		_main.remove_child(platform)
+		platform.queue_free()
+		generate_platform()
+		_first_pos = _loaded_platforms[0].global_position
 
 func kill_player():
 	_player.global_position = _start_pos
+	# _player.velocity = Vector2(0, 0)
 	clear_platforms()
 	init_platforms()

@@ -2,5 +2,5 @@ class_name Platform
 
 var platform: String
 
-func _init(platform):
-	self.platform = platform
+func _init(_platform):
+	self.platform = _platform
