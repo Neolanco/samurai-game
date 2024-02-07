@@ -64,7 +64,7 @@ func generate_platform():
 		_loaded_platforms.append(node)
 		_main.add_child(node)
 		_last_node = node
-		_first_pos = node.global_position
+		_first_pos = node.global_position + _get_most_right_position(node)
 	else:
 		# load random node
 		var index = _rng.randi_range(0, _aviable_platforms.size() - 1)
@@ -108,9 +108,11 @@ func update(_delta):
 		_main.remove_child(platform)
 		platform.queue_free()
 		generate_platform()
-		_first_pos = _loaded_platforms[0].global_position
+		_first_pos = _loaded_platforms[0].global_position + _get_most_right_position(_loaded_platforms[0])
+		print("_first_pos x: " + str(_first_pos.x) + ", y: " + str(_first_pos.y))
 
 func kill_player():
+	#_player.get_tree().quit()
 	_player.global_position = _start_pos
 	_player.time = 0
 	# _player.velocity = Vector2(0, 0)

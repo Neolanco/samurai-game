@@ -97,6 +97,7 @@ func update_score(delta):
 			high_score = score
 	$Camera2D2/ScoreLabel.text = "High-Score: " + str(high_score) + "\nScore: " + str(score) + "\n Time: " + str(int(time)) + " sec"
 
+var last_pos = Vector2(0, 0)
 func _physics_process(delta):
 	var move = read_user_input()
 	add_move_x(move, delta)
@@ -144,6 +145,9 @@ func _physics_process(delta):
 			
 	
 	update_score(delta)
+	if $".".global_position != last_pos:
+		last_pos = $".".global_position
+		print("playerpos x: " + str($".".global_position.x) + ", y: " + str($".".global_position.y))
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
