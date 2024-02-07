@@ -70,7 +70,8 @@ func generate_platform():
 	if _last_node:
 		node.global_position = _get_most_right_position(_last_node) + _last_node.global_position
 	else:
-		node.global_position = Vector2(-500, 300)
+		node = load("res://platforms/dirt3-1.tscn").instantiate()
+		node.global_position = Vector2(-400, 300)
 	
 	# apply jump
 	node.global_position += get_random_jump_vector()
