@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://buv03lchlewpy"]
+
+[ext_resource type="Texture2D" uid="uid://xd0k2jsa765m" path="res://sprites/Tileset/Torch/SpriteFackel1.png" id="1_cy7hl"]
+[ext_resource type="Texture2D" uid="uid://cldphsbpkq3yn" path="res://sprites/Tileset/Torch/SpriteFackel2.png" id="2_6cu13"]
+[ext_resource type="Texture2D" uid="uid://catyq2x4bhfpk" path="res://sprites/Tileset/Torch/SpriteFackel3.png" id="3_c8n75"]
+[ext_resource type="Texture2D" uid="uid://d1r0kjmmaddr8" path="res://sprites/Tileset/Torch/SpriteFackel4.png" id="4_v8dif"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a0c6u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cy7hl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6cu13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_c8n75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_v8dif")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Torch" type="AnimatedSprite2D"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_a0c6u")
+autoplay = "default"
+frame_progress = 0.335696
