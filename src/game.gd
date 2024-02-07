@@ -1,7 +1,7 @@
 class_name Game
 
 # consts
-const JUMP_DISTANCE = Vector2(600, 300)
+const JUMP_DISTANCE = Vector2(500, 220)
 const MIN_JUMP_DISTANCE = Vector2(200.0, 50.0)
 const RANDOM_JUMP_DISTANCE = true
 
@@ -13,6 +13,8 @@ var _player
 
 var _last_node: TileMap
 var _first_pos: Vector2
+var _is_killing: bool = false
+var _delay_update: float = 0
 
 func _init(main: Node2D, player: CharacterBody2D):
 	_main = main
@@ -97,10 +99,18 @@ func _get_most_right_position(node: TileMap):
 				max_cell = pos
 	return node.map_to_local(max_cell) + Vector2(0.5 * node.rendering_quadrant_size, -0.5 * node.rendering_quadrant_size)
 
-func update(_delta):
+func update(delta):
+	_delay_update += delta
+	if _is_killing:
+		return
+	
 	# must be before generate_platform and offset must be less than generate_platform
 	if _player.global_position.y > _last_node.global_position.y + 3600:
 		kill_player()
+	
+	if _delay_update < 1:
+		return
+	_delay_update = 0
 	
 	# must be after kill_player anf offset must be more than kill_player
 	var pos = _player.global_position
@@ -110,13 +120,15 @@ func update(_delta):
 		platform.queue_free()
 		generate_platform()
 		_first_pos = _loaded_platforms[0].global_position + _get_most_right_position(_loaded_platforms[0])
-		# print("_first_pos x: " + str(_first_pos.x) + ", y: " + str(_first_pos.y))
+		print("_first_pos x: " + str(_first_pos.x) + ", y: " + str(_first_pos.y))
 
 func kill_player():
+	_is_killing = true
 	# _player.get_tree().quit()
 	_player.global_position = Vector2(0, 0)
 	_player.time = 0
 	_player.score = 0
-	_player.velocity.x = 0
+	_player.velocity = Vector2(0, 0)
 	clear_platforms()
 	init_platforms()
+	_is_killing = false

@@ -152,6 +152,8 @@ func _physics_process(delta):
 	
 	add_animation(delta)
 	
+	print_pos()
+	
 	update_score(delta)
 	
 # Called when the node enters the scene tree for the first time.
