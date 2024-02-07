@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://main.gd" id="1_3byd7"]
 [ext_resource type="PackedScene" uid="uid://bplbj3sfn2no5" path="res://player_1.tscn" id="1_kn2ah"]
 [ext_resource type="Script" path="res://player_1.gd" id="2_acgtg"]
-[ext_resource type="Texture2D" uid="uid://gyfnklba5bvu" path="res://refrences/cave backgrounds/grey_L1.png" id="4_w15sg"]
-[ext_resource type="Texture2D" uid="uid://bjpcb421mk7vh" path="res://refrences/cave backgrounds/grey_L2.png" id="5_y2aty"]
-[ext_resource type="Texture2D" uid="uid://2a08sm62xvhh" path="res://refrences/cave backgrounds/grey_L3.png" id="6_ua8a7"]
-[ext_resource type="Texture2D" uid="uid://ojs3lgeuqtq0" path="res://refrences/cave backgrounds/grey_L4.png" id="7_7ql6b"]
+[ext_resource type="Texture2D" uid="uid://c0mtgu04s5m3s" path="res://refrences/cave backgrounds/grey_L1.png" id="4_w15sg"]
+[ext_resource type="Texture2D" uid="uid://cpxt6058d01ps" path="res://refrences/cave backgrounds/grey_L2.png" id="5_y2aty"]
+[ext_resource type="Texture2D" uid="uid://cl4bjm7ana5nt" path="res://refrences/cave backgrounds/grey_L3.png" id="6_ua8a7"]
+[ext_resource type="Texture2D" uid="uid://ckam573xemvut" path="res://refrences/cave backgrounds/grey_L4.png" id="7_7ql6b"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_3byd7")

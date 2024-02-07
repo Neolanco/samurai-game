@@ -11,9 +11,12 @@ const ACCELERATION = 30.0
 const SLIDE = 0.2 # between 0 and 1
 # other
 const START_POS = Vector2(90, -200)
+const JUMP_AFTER_PLATFORM = 0.1
 
 var main
 var game
+var floating_seconds: float = 0.0
+var jump_hold = false
 
 func read_user_input():
 	var move = Vector2i(0, 0)
@@ -46,12 +49,31 @@ func add_move_x(move, delta):
 		velocity.x += move.x * (ACCELERATION ** 2) * delta
 
 func add_move_y(move, delta):
-	if move.y == -1:
-		if is_on_floor():
-			# velocity fixed
-			velocity.y += JUMP_VELOCITY
-		else:
-			velocity.y += AIR_JUMP_VELOCITY * delta
+	# set floating_seconds
+	if is_on_floor():
+		floating_seconds = 0.0
+	else:
+		floating_seconds += delta
+	
+	# check if jump pressed
+	if move.y != -1:
+		jump_hold = false
+		return
+	
+	if floating_seconds < JUMP_AFTER_PLATFORM:
+		# don't jump if jump was kept presed
+		if jump_hold:
+			return
+		jump_hold = true
+		
+		# velocity fixed
+		velocity.y = JUMP_VELOCITY
+	else:
+		# longer jump
+		velocity.y += AIR_JUMP_VELOCITY * delta
+
+	# because just jumped
+	floating_seconds = 10 ** 18
 
 func flip_player():
 	$"Sprite_Idle".flip_h = velocity.x < 0
@@ -89,6 +111,6 @@ func _ready():
 	# Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _main_ready():
-	game.register_platform("res://Platforms/dirt3-1.tscn")
+	game.register_platform("res://platforms/dirt3-1.tscn")
 	game.init_platforms()
 	$".".global_position = START_POS
