@@ -152,7 +152,7 @@ func _physics_process(delta):
 	
 	add_animation(delta)
 	
-	print_pos()
+	#print_pos()
 	
 	update_score(delta)
 	
