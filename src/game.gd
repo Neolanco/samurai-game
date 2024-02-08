@@ -68,7 +68,7 @@ func generate_platform():
 			break
 	var node: TileMap = load(platform).instantiate()
 	
-	# new platform pos without jump
+	# new platform pos without jumpd
 	if _last_node:
 		node.global_position = _get_most_right_position(_last_node) + _last_node.global_position
 	else:
