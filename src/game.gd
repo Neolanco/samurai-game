@@ -72,8 +72,8 @@ func generate_platform():
 	if _last_node:
 		node.global_position = _get_most_right_position(_last_node) + _last_node.global_position
 	else:
-		node = load("res://platforms/dirt3-1.tscn").instantiate()
-		node.global_position = Vector2(-400, 300)
+		node = load("res://platforms/start.tscn").instantiate()
+		node.global_position = Vector2(-800, 300)
 	
 	# apply jump
 	node.global_position += get_random_jump_vector()
@@ -126,8 +126,11 @@ func kill_player():
 	_is_killing = true
 	# _player.get_tree().quit()
 	_player.global_position = Vector2(0, 0)
-	_player.time = 0
-	_player.score = 0
+	if _player.health <= 0:
+		_player.time = 0
+		_player.score = 0
+	else:
+		_player.health -= 1
 	_player.velocity = Vector2(0, 0)
 	clear_platforms()
 	init_platforms()
