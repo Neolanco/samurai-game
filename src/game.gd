@@ -128,10 +128,13 @@ func kill_player():
 	_player.global_position = Vector2(0, 0)
 	if _player.health <= 0:
 		_player.time = 0
-		_player.score = 0
+		_player.last_score = 0
+		_player.health = 3
 	else:
 		_player.health -= 1
-	_player.velocity = Vector2(0, 0)
+		_player.last_score = _player.score + _player.last_score
+	_player.score = 0
+	# _player.velocity = Vector2(0, 0)
 	clear_platforms()
 	init_platforms()
 	_is_killing = false
