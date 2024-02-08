@@ -24,6 +24,7 @@ var time: float = 0
 var sprites = [$Sprite_Idle, $Sprite_Walking, $Sprite_Jump, $Sprite_Run]
 var is_jumping_since: float = 0
 var can_move = true
+var health: int = 3
 
 func read_user_input():
 	var move = Vector2i(0, 0)
@@ -138,6 +139,9 @@ func add_animation(delta):
 	else:
 		start_animation($Sprite_Idle)
 
+func update_health():
+	$"HealthLabel".text = str(health)
+
 func _physics_process(delta):
 	var move = read_user_input()
 	add_move_x(move, delta)
@@ -155,6 +159,7 @@ func _physics_process(delta):
 	#print_pos()
 	
 	update_score(delta)
+	update_health()
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
