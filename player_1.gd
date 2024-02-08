@@ -175,6 +175,8 @@ func _ready():
 
 func _main_ready():
 	game.register_platform("res://platforms/smb1-1.tscn", 0.1)
+	game.register_platform("res://platforms/dirt9_5-1.tscn", 1)
+	game.register_platform("res://platforms/dirt9_4-1.tscn", 1)
 	game.register_platform("res://platforms/dirt9_3-1.tscn", 1)
 	game.register_platform("res://platforms/dirt9_2-1.tscn", 1)
 	game.register_platform("res://platforms/dirt9_1-1.tscn", 1)
