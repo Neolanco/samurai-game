@@ -24,7 +24,7 @@ func _init(main: Node2D, player: CharacterBody2D):
 	_rng.randomize()
 
 func init_platforms():
-	for i in 10:
+	for i in 20:
 		generate_platform()
 
 func clear_platforms():
