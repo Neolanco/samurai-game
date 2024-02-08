@@ -1,15 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://csvhfk8ckmvr0"]
+[gd_scene load_steps=12 format=3 uid="uid://csvhfk8ckmvr0"]
 
 [ext_resource type="Script" path="res://titlescreen.gd" id="1_xus21"]
 [ext_resource type="TileSet" uid="uid://curtu215lbuqg" path="res://sprites/general-tileset.tres" id="2_aj342"]
 [ext_resource type="PackedScene" uid="uid://dnopqbshnc0jx" path="res://player_dummy.tscn" id="2_rnf7f"]
-[ext_resource type="Texture2D" uid="uid://i0yr8p2bwg2h" path="res://refrences/cave backgrounds/grey_L1.png" id="4_hvbxn"]
-[ext_resource type="Texture2D" uid="uid://ds53dgsr1fnj0" path="res://refrences/cave backgrounds/grey_L2.png" id="5_hdlcj"]
 [ext_resource type="Texture2D" uid="uid://dot8eo665aeqq" path="res://refrences/2D lighting tutorial/light.png" id="5_oljv4"]
-[ext_resource type="Texture2D" uid="uid://d1vscsvcv6gye" path="res://refrences/cave backgrounds/grey_L3.png" id="6_oiuuu"]
-[ext_resource type="Texture2D" uid="uid://c6nyl6n6xyn2f" path="res://refrences/cave backgrounds/grey_L4.png" id="7_4fv0y"]
+[ext_resource type="Texture2D" uid="uid://be7kpix7mry7c" path="res://refrences/paralax tutorial/parallax-00.png" id="7_2htk7"]
+[ext_resource type="Texture2D" uid="uid://begaffd3l4n7y" path="res://refrences/paralax tutorial/parallax-01.png" id="8_iasdf"]
 [ext_resource type="Theme" uid="uid://l2kuag675c7k" path="res://general theme.tres" id="9_0jkfe"]
 [ext_resource type="PackedScene" uid="uid://buv03lchlewpy" path="res://Torch.tscn" id="9_u3cns"]
+[ext_resource type="Texture2D" uid="uid://cohlcxchno3kj" path="res://refrences/paralax tutorial/parallax-02.png" id="9_wup5p"]
+[ext_resource type="Texture2D" uid="uid://cjld1c0aclu42" path="res://refrences/paralax tutorial/parallax-03.png" id="10_6to6y"]
+[ext_resource type="Texture2D" uid="uid://bpxalaho72knf" path="res://refrences/paralax tutorial/parallax-04.png" id="11_8k3en"]
 
 [node name="Titlescreen" type="Node2D"]
 script = ExtResource("1_xus21")
@@ -20,10 +21,9 @@ color = Color(0.424547, 0.552514, 0.640089, 1)
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_aj342")
 format = 2
-layer_0/tile_data = PackedInt32Array(393215, 458752, 8, 458751, 524288, 12, 327680, 458752, 8, 393216, 458752, 7, 327681, 458752, 8, 393217, 524288, 12, 327682, 524288, 7, 393218, 524288, 268435464, 393213, 458752, 8, 458749, 524288, 12, 393214, 458752, 8, 458750, 458752, 7, 393221, 458752, 12, 327685, 458752, 12, 262149, 458752, 12, 196613, 458752, 12, 131077, 458752, 12, 65541, 458752, 12)
+layer_0/tile_data = PackedInt32Array(393215, 458752, 8, 458751, 524288, 12, 327680, 458752, 8, 393216, 458752, 7, 327681, 458752, 8, 393217, 524288, 12, 327682, 524288, 7, 393218, 524288, 268435464, 393213, 458752, 8, 458749, 524288, 12, 393214, 458752, 8, 458750, 458752, 7, 65541, 458752, 12)
 
 [node name="Player_dummy" parent="." instance=ExtResource("2_rnf7f")]
-z_index = 4
 position = Vector2(50, 286.57)
 
 [node name="PointLight2D" type="PointLight2D" parent="Player_dummy"]
@@ -32,12 +32,14 @@ texture = ExtResource("5_oljv4")
 texture_scale = 0.6
 
 [node name="Camera2D" type="Camera2D" parent="."]
+z_index = 10
 anchor_mode = 0
 zoom = Vector2(2.5, 2.5)
 limit_left = 0
 limit_top = 0
 
 [node name="UI" type="Control" parent="."]
+z_index = 15
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -62,24 +64,30 @@ scale = Vector2(2.09375, 2.09375)
 z_index = -1
 position = Vector2(423, 218.75)
 scale = Vector2(1.5, 1.75)
-texture = ExtResource("4_hvbxn")
+texture = ExtResource("7_2htk7")
 
 [node name="GreyL2" type="Sprite2D" parent="Background"]
 z_index = -1
 position = Vector2(423, 218.75)
 scale = Vector2(1.5, 1.75)
-texture = ExtResource("5_hdlcj")
+texture = ExtResource("8_iasdf")
 
 [node name="GreyL3" type="Sprite2D" parent="Background"]
 z_index = -1
 position = Vector2(423, 218.75)
 scale = Vector2(1.5, 1.75)
-texture = ExtResource("6_oiuuu")
+texture = ExtResource("9_wup5p")
 
 [node name="GreyL4" type="Sprite2D" parent="Background"]
 z_index = -1
 position = Vector2(423, 218.75)
 scale = Vector2(1.5, 1.75)
-texture = ExtResource("7_4fv0y")
+texture = ExtResource("10_6to6y")
+
+[node name="GreyL5" type="Sprite2D" parent="Background"]
+z_index = 1
+position = Vector2(336, 283)
+scale = Vector2(0.980311, 1.0963)
+texture = ExtResource("11_8k3en")
 
 [connection signal="pressed" from="UI/BTNstart" to="." method="_on_BTNstart_pressed"]

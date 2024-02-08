@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1eor63wtdlft"]
+[gd_scene load_steps=7 format=3 uid="uid://c1eor63wtdlft"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_3byd7"]
 [ext_resource type="PackedScene" uid="uid://bplbj3sfn2no5" path="res://player_1.tscn" id="1_kn2ah"]
+[ext_resource type="Texture2D" uid="uid://b2q8g3gt1tr3n" path="res://refrences/cave backgrounds/red_L1.png" id="3_ruq6u"]
+[ext_resource type="Texture2D" uid="uid://cqqepxfjd183v" path="res://refrences/cave backgrounds/red_L2.png" id="4_u10rw"]
+[ext_resource type="Texture2D" uid="uid://bdu5hw8cjnktr" path="res://refrences/cave backgrounds/red_L3.png" id="5_tkqpy"]
+[ext_resource type="Texture2D" uid="uid://cbue4nr1e2dlk" path="res://refrences/cave backgrounds/red_L4.png" id="6_ufp1h"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_3byd7")
@@ -9,6 +13,7 @@ script = ExtResource("1_3byd7")
 [node name="Player1" parent="." instance=ExtResource("1_kn2ah")]
 
 [node name="Camera2D2" type="Camera2D" parent="Player1"]
+limit_left = 0
 
 [node name="ScoreLabel" type="Label" parent="Player1/Camera2D2"]
 offset_left = 56.0
@@ -17,3 +22,69 @@ offset_right = 366.0
 offset_bottom = -160.0
 text = "Test"
 horizontal_alignment = 2
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2(1500, 125)
+transform = Transform2D(1, 0, 0, 1, 1500, 125)
+scroll_offset = Vector2(10, 0)
+
+[node name="base" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+position = Vector2(0, -2000)
+scale = Vector2(20, 20)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/base"]
+offset_right = 64000.0
+offset_bottom = 250.0
+texture = ExtResource("3_ruq6u")
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="ParallaxBackground/base"]
+offset_right = 64000.0
+offset_bottom = 250.0
+texture = ExtResource("4_u10rw")
+stretch_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="ParallaxBackground/base"]
+offset_right = 64000.0
+offset_bottom = 250.0
+texture = ExtResource("5_tkqpy")
+stretch_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="ParallaxBackground/base"]
+offset_right = 64000.0
+offset_bottom = 250.0
+texture = ExtResource("6_ufp1h")
+stretch_mode = 1
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 1)
+motion_mirroring = Vector2(3200, 3100)
+
+[node name="RedL1" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(5, 12.5)
+texture = ExtResource("3_ruq6u")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(3200, 3100)
+
+[node name="RedL2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+scale = Vector2(5, 12.5)
+texture = ExtResource("4_u10rw")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.3, 1)
+motion_mirroring = Vector2(3200, 3100)
+
+[node name="RedL3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+scale = Vector2(5, 12.5)
+texture = ExtResource("5_tkqpy")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.4, 1)
+motion_mirroring = Vector2(3200, 3100)
+
+[node name="RedL4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+scale = Vector2(5, 12.5)
+texture = ExtResource("6_ufp1h")

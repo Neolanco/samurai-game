@@ -5,5 +5,6 @@ Thumbs.db
 *.tmp
 *.kra~
 *.png\~
+*.png~
 *-autosave.kra
 platforms/dirt-diagnoal.tscn
