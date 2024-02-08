@@ -22,7 +22,7 @@ var last_score: int = 0
 var high_score: int = 0
 var time: float = 0
 @onready
-var sprites = [$Sprite_Idle, $Sprite_Walking, $Sprite_Jump, $Sprite_Run]
+var sprites = [$Sprite_Idle_Samurai, $Sprite_Walking_Samurai, $Sprite_Jump_Samurai, $Sprite_Run_Samurai]
 var is_jumping_since: float = 0
 var can_move = true
 var health: int = 3
@@ -87,10 +87,9 @@ func add_move_y(move, delta):
 	floating_seconds = 10 ** 18
 
 func flip_player():
-	$"Sprite_Idle".flip_h = velocity.x < 0
-	$"Sprite_Walking".flip_h = velocity.x < 0
-	$"Sprite_Death".flip_h = velocity.x < 0
-	$"Sprite_Jump".flip_h = velocity.x < 0
+	for s in sprites:
+		if velocity.x != 0.0:
+			s.flip_h = velocity.x < 0
 
 func update_score(delta):
 	time += delta
@@ -118,7 +117,7 @@ func start_animation(sprite):
 func add_animation(delta):
 	is_jumping_since += delta
 	if !is_on_floor():
-		start_animation($Sprite_Jump)
+		start_animation($Sprite_Jump_Samurai)
 		is_jumping_since = 0
 		return
 	
@@ -127,18 +126,21 @@ func add_animation(delta):
 	
 	# Changes the animation based on velocity
 	if abs(velocity.x) > 0:
-		if $Sprite_Walking.is_visible() || $Sprite_Run.is_visible():
+		if $Sprite_Walking_Samurai.is_visible() || $Sprite_Run_Samurai.is_visible():
 			pass
 		elif abs(velocity.x) == (MAX_VELOCITY.x):
-			start_animation($Sprite_Run)
+			start_animation($Sprite_Run_Samurai)
 		else:
-			start_animation($Sprite_Walking)
+			if abs(velocity.x) > 400:
+				start_animation($Sprite_Run_Samurai)
+			else:
+				start_animation($Sprite_Walking_Samurai)
 		return
 		
-	if $Sprite_Idle.is_visible():
+	if $Sprite_Idle_Samurai.is_visible():
 		pass
 	else:
-		start_animation($Sprite_Idle)
+		start_animation($Sprite_Idle_Samurai)
 
 func update_health():
 	$"HealthLabel".text = str(health)
