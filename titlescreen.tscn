@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://csvhfk8ckmvr0"]
 
 [ext_resource type="Script" path="res://titlescreen.gd" id="1_xus21"]
-[ext_resource type="TileSet" uid="uid://curtu215lbuqg" path="res://sprites/general-tileset.tres" id="2_aj342"]
+[ext_resource type="TileSet" uid="uid://inyccwww6src" path="res://sprites/general-tileset.tres" id="2_aj342"]
 [ext_resource type="PackedScene" uid="uid://dnopqbshnc0jx" path="res://player_dummy.tscn" id="2_rnf7f"]
 [ext_resource type="Texture2D" uid="uid://dot8eo665aeqq" path="res://refrences/2D lighting tutorial/light.png" id="5_oljv4"]
 [ext_resource type="Texture2D" uid="uid://be7kpix7mry7c" path="res://refrences/paralax tutorial/parallax-00.png" id="7_2htk7"]
