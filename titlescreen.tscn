@@ -1,16 +1,18 @@
-[gd_scene load_steps=12 format=3 uid="uid://csvhfk8ckmvr0"]
+[gd_scene load_steps=14 format=3 uid="uid://csvhfk8ckmvr0"]
 
 [ext_resource type="Script" path="res://titlescreen.gd" id="1_xus21"]
-[ext_resource type="TileSet" uid="uid://inyccwww6src" path="res://sprites/general-tileset.tres" id="2_aj342"]
+[ext_resource type="TileSet" uid="uid://curtu215lbuqg" path="res://sprites/general-tileset.tres" id="2_aj342"]
 [ext_resource type="PackedScene" uid="uid://dnopqbshnc0jx" path="res://player_dummy.tscn" id="2_rnf7f"]
 [ext_resource type="Texture2D" uid="uid://dot8eo665aeqq" path="res://refrences/2D lighting tutorial/light.png" id="5_oljv4"]
 [ext_resource type="Texture2D" uid="uid://be7kpix7mry7c" path="res://refrences/paralax tutorial/parallax-00.png" id="7_2htk7"]
+[ext_resource type="Script" path="res://ParallaxClouds.gd" id="8_d2qgn"]
 [ext_resource type="Texture2D" uid="uid://begaffd3l4n7y" path="res://refrences/paralax tutorial/parallax-01.png" id="8_iasdf"]
 [ext_resource type="Theme" uid="uid://l2kuag675c7k" path="res://general theme.tres" id="9_0jkfe"]
 [ext_resource type="PackedScene" uid="uid://buv03lchlewpy" path="res://Torch.tscn" id="9_u3cns"]
 [ext_resource type="Texture2D" uid="uid://cohlcxchno3kj" path="res://refrences/paralax tutorial/parallax-02.png" id="9_wup5p"]
 [ext_resource type="Texture2D" uid="uid://cjld1c0aclu42" path="res://refrences/paralax tutorial/parallax-03.png" id="10_6to6y"]
 [ext_resource type="Texture2D" uid="uid://bpxalaho72knf" path="res://refrences/paralax tutorial/parallax-04.png" id="11_8k3en"]
+[ext_resource type="Texture2D" uid="uid://c7otxikx4hogh" path="res://sprites/title.png" id="12_tno4j"]
 
 [node name="Titlescreen" type="Node2D"]
 script = ExtResource("1_xus21")
@@ -27,6 +29,7 @@ layer_0/tile_data = PackedInt32Array(393215, 458752, 8, 458751, 524288, 12, 3276
 position = Vector2(50, 286.57)
 
 [node name="PointLight2D" type="PointLight2D" parent="Player_dummy"]
+color = Color(1, 0.121569, 0.913725, 1)
 energy = 0.5
 texture = ExtResource("5_oljv4")
 texture_scale = 0.6
@@ -54,40 +57,64 @@ offset_bottom = 340.0
 theme = ExtResource("9_0jkfe")
 text = "Start Game!"
 
+[node name="PointLight2D" type="PointLight2D" parent="UI/BTNstart"]
+position = Vector2(75, 20)
+scale = Vector2(1.5, 1.5)
+energy = 0.5
+texture = ExtResource("5_oljv4")
+texture_scale = 0.6
+
 [node name="Torch" parent="." instance=ExtResource("9_u3cns")]
 position = Vector2(164.95, 317)
 scale = Vector2(2.09375, 2.09375)
 
-[node name="Background" type="Node" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="GreyL1" type="Sprite2D" parent="Background"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="GreyL1" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 z_index = -1
 position = Vector2(423, 218.75)
 scale = Vector2(1.5, 1.75)
 texture = ExtResource("7_2htk7")
 
-[node name="GreyL2" type="Sprite2D" parent="Background"]
+[node name="ParallaxClouds" type="ParallaxLayer" parent="ParallaxBackground"]
+script = ExtResource("8_d2qgn")
+
+[node name="GreyL2" type="Sprite2D" parent="ParallaxBackground/ParallaxClouds"]
 z_index = -1
 position = Vector2(423, 218.75)
 scale = Vector2(1.5, 1.75)
 texture = ExtResource("8_iasdf")
 
-[node name="GreyL3" type="Sprite2D" parent="Background"]
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="GreyL3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
 z_index = -1
 position = Vector2(423, 218.75)
 scale = Vector2(1.5, 1.75)
 texture = ExtResource("9_wup5p")
 
-[node name="GreyL4" type="Sprite2D" parent="Background"]
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="GreyL4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
 z_index = -1
 position = Vector2(423, 218.75)
 scale = Vector2(1.5, 1.75)
 texture = ExtResource("10_6to6y")
 
-[node name="GreyL5" type="Sprite2D" parent="Background"]
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = 1
+
+[node name="GreyL5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
 position = Vector2(336, 283)
 scale = Vector2(0.980311, 1.0963)
 texture = ExtResource("11_8k3en")
+
+[node name="Title" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(136, 69)
+scale = Vector2(0.220833, 0.220833)
+texture = ExtResource("12_tno4j")
 
 [connection signal="pressed" from="UI/BTNstart" to="." method="_on_BTNstart_pressed"]
