@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dm0ntv7ncj63v"]
 
-[ext_resource type="TileSet" uid="uid://curtu215lbuqg" path="res://sprites/general-tileset.tres" id="1_0hgxc"]
-[ext_resource type="Texture2D" uid="uid://d1kow30lsb00y" path="res://refrences/SuperMarioBrosMap1-1.png" id="2_jguac"]
+[ext_resource type="TileSet" uid="uid://inyccwww6src" path="res://sprites/general-tileset.tres" id="1_0hgxc"]
+[ext_resource type="Texture2D" uid="uid://0e8tcumtfk05" path="res://refrences/SuperMarioBrosMap1-1.png" id="2_jguac"]
 
 [node name="smb1-1" type="TileMap"]
 tile_set = ExtResource("1_0hgxc")
