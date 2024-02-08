@@ -18,7 +18,7 @@
 script = ExtResource("1_xus21")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.424547, 0.552514, 0.640089, 1)
+color = Color(0.164706, 0.215686, 0.25098, 1)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_aj342")
@@ -30,7 +30,7 @@ position = Vector2(50, 286.57)
 
 [node name="PointLight2D" type="PointLight2D" parent="Player_dummy"]
 color = Color(1, 0.121569, 0.913725, 1)
-energy = 0.5
+energy = 1.36
 texture = ExtResource("5_oljv4")
 texture_scale = 0.6
 
@@ -60,7 +60,7 @@ text = "Start Game!"
 [node name="PointLight2D" type="PointLight2D" parent="UI/BTNstart"]
 position = Vector2(75, 20)
 scale = Vector2(1.5, 1.5)
-energy = 0.5
+energy = 2.94
 texture = ExtResource("5_oljv4")
 texture_scale = 0.6
 
@@ -116,5 +116,11 @@ z_index = -1
 position = Vector2(136, 69)
 scale = Vector2(0.220833, 0.220833)
 texture = ExtResource("12_tno4j")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Title"]
+scale = Vector2(6.79245, 6.79245)
+energy = 2.94
+texture = ExtResource("5_oljv4")
+texture_scale = 0.6
 
 [connection signal="pressed" from="UI/BTNstart" to="." method="_on_BTNstart_pressed"]
