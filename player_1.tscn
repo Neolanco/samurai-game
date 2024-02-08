@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://bplbj3sfn2no5"]
+[gd_scene load_steps=52 format=3 uid="uid://bplbj3sfn2no5"]
 
 [ext_resource type="Texture2D" uid="uid://diw4l2nylk1sx" path="res://sprites/crow/Walk/1.PNG" id="1_5j1c5"]
 [ext_resource type="Script" path="res://player_1.gd" id="1_5xx3n"]
@@ -36,14 +36,15 @@
 [ext_resource type="Texture2D" uid="uid://cxeurk7xxbbl2" path="res://sprites/crow_centred/jump/13.PNG" id="33_wjhgl"]
 [ext_resource type="Texture2D" uid="uid://cpaiivcxl0cs7" path="res://sprites/crow_centred/jump/14.PNG" id="34_mbslc"]
 [ext_resource type="Texture2D" uid="uid://cucgeg0hsrkrr" path="res://sprites/crow_centred/jump/15.PNG" id="35_gvnmv"]
-[ext_resource type="Texture2D" uid="uid://citibrphvtaeb" path="res://sprites/crow_centred/run/1.PNG" id="37_atxcr"]
-[ext_resource type="Texture2D" uid="uid://dcsp8jshv64uh" path="res://sprites/crow_centred/run/2.PNG" id="38_wp4d4"]
-[ext_resource type="Texture2D" uid="uid://dv86mbnref6y1" path="res://sprites/crow_centred/run/3.PNG" id="39_tatp4"]
-[ext_resource type="Texture2D" uid="uid://bwl8v0fsgka0m" path="res://sprites/crow_centred/run/4.PNG" id="40_xjet7"]
-[ext_resource type="Texture2D" uid="uid://xmovjyqqhr48" path="res://sprites/crow_centred/run/5.PNG" id="41_lvvv8"]
-[ext_resource type="Texture2D" uid="uid://c8gfwqpomuhcv" path="res://sprites/crow_centred/run/6.PNG" id="42_rye6l"]
-[ext_resource type="Texture2D" uid="uid://baxne4u2rkt5v" path="res://sprites/crow_centred/run/7.PNG" id="43_a4ljg"]
-[ext_resource type="Texture2D" uid="uid://6wuaam6lt5jv" path="res://sprites/crow_centred/run/8.PNG" id="44_hy0xi"]
+[ext_resource type="Texture2D" uid="uid://cq3qtl642vqrn" path="res://sprites/crow_centred/run/1.PNG" id="37_atxcr"]
+[ext_resource type="Texture2D" uid="uid://c0k87lcmn5tdw" path="res://sprites/crow_centred/run/2.PNG" id="38_wp4d4"]
+[ext_resource type="Texture2D" uid="uid://cewlgorswsll1" path="res://sprites/crow_centred/run/3.PNG" id="39_tatp4"]
+[ext_resource type="Texture2D" uid="uid://b0ebk70l4bwob" path="res://sprites/crow_centred/run/4.PNG" id="40_xjet7"]
+[ext_resource type="Texture2D" uid="uid://dmhp852vmrqji" path="res://sprites/crow_centred/run/5.PNG" id="41_lvvv8"]
+[ext_resource type="Texture2D" uid="uid://b7ghoay7mg062" path="res://sprites/crow_centred/run/6.PNG" id="42_rye6l"]
+[ext_resource type="Texture2D" uid="uid://dx3p2lb38olrr" path="res://sprites/crow_centred/run/7.PNG" id="43_a4ljg"]
+[ext_resource type="Texture2D" uid="uid://gxsrbf7kka5w" path="res://sprites/crow_centred/run/8.PNG" id="44_hy0xi"]
+[ext_resource type="Texture2D" uid="uid://dot8eo665aeqq" path="res://refrences/2D lighting tutorial/light.png" id="45_k6rje"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u1a71"]
 size = Vector2(45, 89)
@@ -263,3 +264,10 @@ offset_right = 36.6667
 offset_bottom = -53.0
 text = "Health"
 horizontal_alignment = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(1.5, 1.5)
+color = Color(1, 0.121569, 0.913725, 1)
+energy = 0.5
+texture = ExtResource("45_k6rje")
+texture_scale = 0.6
