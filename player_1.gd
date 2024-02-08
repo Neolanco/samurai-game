@@ -18,6 +18,7 @@ var game
 var floating_seconds: float = 0.0
 var jump_hold = false
 var score: int = 0
+var last_score: int = 0
 var high_score: int = 0
 var time: float = 0
 @onready
@@ -95,9 +96,9 @@ func update_score(delta):
 	time += delta
 	if $".".global_position.x * SCORE_FACTOR > score:
 		score = int($".".global_position.x * SCORE_FACTOR)
-		if score > high_score:
-			high_score = score
-	$Camera2D2/ScoreLabel.text = "High-Score: " + str(high_score) + "\nScore: " + str(score) + "\n Time: " + str(int(time)) + " sec"
+		if score + last_score > high_score:
+			high_score = score + last_score
+	$Camera2D2/ScoreLabel.text = "High-Score: " + str(high_score) + "\nScore: " + str(score + last_score) + "\n Time: " + str(int(time)) + " sec"
 
 var last_pos = Vector2(0, 0)
 func print_pos():
@@ -184,3 +185,4 @@ func _main_ready():
 	game.register_platform("res://platforms/dirt1-1.tscn", 1)
 	game.init_platforms()
 	$".".global_position = Vector2(0, 0)
+
