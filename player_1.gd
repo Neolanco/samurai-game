@@ -21,11 +21,15 @@ var score: int = 0
 var last_score: int = 0
 var high_score: int = 0
 var time: float = 0
-@onready
-var sprites = [$Sprite_Idle_Samurai, $Sprite_Walking_Samurai, $Sprite_Jump_Samurai, $Sprite_Run_Samurai]
 var is_jumping_since: float = 0
 var can_move = true
 var health: int = 3
+var sprites = []
+var sprite_idle
+var sprite_walking
+var sprite_jump
+var sprite_run
+var is_new_charakter = false
 
 func read_user_input():
 	var move = Vector2i(0, 0)
@@ -117,7 +121,7 @@ func start_animation(sprite):
 func add_animation(delta):
 	is_jumping_since += delta
 	if !is_on_floor():
-		start_animation($Sprite_Jump_Samurai)
+		start_animation(sprite_jump)
 		is_jumping_since = 0
 		return
 	
@@ -126,21 +130,21 @@ func add_animation(delta):
 	
 	# Changes the animation based on velocity
 	if abs(velocity.x) > 0:
-		if $Sprite_Walking_Samurai.is_visible() || $Sprite_Run_Samurai.is_visible():
+		if sprite_walking.is_visible() || sprite_run.is_visible():
 			pass
 		elif abs(velocity.x) == (MAX_VELOCITY.x):
-			start_animation($Sprite_Run_Samurai)
+			start_animation(sprite_run)
 		else:
 			if abs(velocity.x) > 400:
-				start_animation($Sprite_Run_Samurai)
+				start_animation(sprite_run)
 			else:
-				start_animation($Sprite_Walking_Samurai)
+				start_animation(sprite_walking)
 		return
 		
-	if $Sprite_Idle_Samurai.is_visible():
+	if sprite_idle.is_visible():
 		pass
 	else:
-		start_animation($Sprite_Idle_Samurai)
+		start_animation(sprite_idle)
 
 func update_health():
 	$"HealthLabel".text = str(health)
@@ -163,7 +167,20 @@ func _physics_process(delta):
 	
 	update_score(delta)
 	update_health()
-	
+
+func update_sprites():
+	if is_new_charakter:
+		sprite_idle = $Sprite_Idle_Samurai
+		sprite_walking = $Sprite_Walking_Samurai
+		sprite_jump = $Sprite_Jump_Samurai
+		sprite_run = $Sprite_Run_Samurai
+	else:
+		sprite_idle = $Sprite_Idle
+		sprite_walking = $Sprite_Walking
+		sprite_jump = $Sprite_Jump
+		sprite_run = $Sprite_Run
+	sprites = [sprite_idle, sprite_walking, sprite_jump, sprite_run]
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# register _main_ready()
@@ -174,6 +191,7 @@ func _ready():
 	# hide mouse cursor
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	# Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	update_sprites()
 
 func _main_ready():
 	game.register_platform("res://platforms/smb1-1.tscn", 0.1)
