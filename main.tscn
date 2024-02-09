@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1eor63wtdlft"]
+[gd_scene load_steps=7 format=3 uid="uid://c1eor63wtdlft"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_3byd7"]
 [ext_resource type="PackedScene" uid="uid://bplbj3sfn2no5" path="res://player_1.tscn" id="1_kn2ah"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://cqqepxfjd183v" path="res://refrences/cave backgrounds/red_L2.png" id="4_u10rw"]
 [ext_resource type="Texture2D" uid="uid://bdu5hw8cjnktr" path="res://refrences/cave backgrounds/red_L3.png" id="5_tkqpy"]
 [ext_resource type="Texture2D" uid="uid://cbue4nr1e2dlk" path="res://refrences/cave backgrounds/red_L4.png" id="6_ufp1h"]
-[ext_resource type="PackedScene" uid="uid://lrkc5r3geu4q" path="res://refrences/enemy_test.tscn" id="7_iyqjg"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_3byd7")
@@ -92,5 +91,3 @@ texture = ExtResource("6_ufp1h")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.611765, 0.611765, 0.611765, 1)
-
-[node name="EnemyTest" parent="." instance=ExtResource("7_iyqjg")]
