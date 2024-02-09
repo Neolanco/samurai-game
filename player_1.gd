@@ -30,7 +30,7 @@ var sprite_walking
 var sprite_jump
 var sprite_run
 var is_new_charakter = false
-var sprite_timeout: float = 0
+var sprite_timeout: float = 11
 
 func read_user_input():
 	var move = Vector2i(0, 0)
@@ -170,7 +170,7 @@ func _physics_process(delta):
 	update_health()
 	
 	sprite_timeout += delta
-	if Input.is_key_pressed(KEY_C) && sprite_timeout < 10:
+	if Input.is_key_pressed(KEY_C) && sprite_timeout > 2:
 		sprite_timeout = 0
 		is_new_charakter = !is_new_charakter
 		update_sprites()
