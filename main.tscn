@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1eor63wtdlft"]
+[gd_scene load_steps=8 format=3 uid="uid://c1eor63wtdlft"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_3byd7"]
 [ext_resource type="PackedScene" uid="uid://bplbj3sfn2no5" path="res://player_1.tscn" id="1_kn2ah"]
 [ext_resource type="Texture2D" uid="uid://b2q8g3gt1tr3n" path="res://refrences/cave backgrounds/red_L1.png" id="3_ruq6u"]
+[ext_resource type="Theme" uid="uid://l2kuag675c7k" path="res://general theme.tres" id="3_sg7nn"]
 [ext_resource type="Texture2D" uid="uid://cqqepxfjd183v" path="res://refrences/cave backgrounds/red_L2.png" id="4_u10rw"]
 [ext_resource type="Texture2D" uid="uid://bdu5hw8cjnktr" path="res://refrences/cave backgrounds/red_L3.png" id="5_tkqpy"]
 [ext_resource type="Texture2D" uid="uid://cbue4nr1e2dlk" path="res://refrences/cave backgrounds/red_L4.png" id="6_ufp1h"]
@@ -20,6 +21,7 @@ offset_left = 56.0
 offset_top = -190.0
 offset_right = 366.0
 offset_bottom = -160.0
+theme = ExtResource("3_sg7nn")
 text = "Test"
 horizontal_alignment = 2
 
