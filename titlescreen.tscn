@@ -3,16 +3,16 @@
 [ext_resource type="Script" path="res://titlescreen.gd" id="1_xus21"]
 [ext_resource type="TileSet" uid="uid://curtu215lbuqg" path="res://sprites/general-tileset.tres" id="2_aj342"]
 [ext_resource type="PackedScene" uid="uid://dnopqbshnc0jx" path="res://player_dummy.tscn" id="2_rnf7f"]
-[ext_resource type="Texture2D" uid="uid://dot8eo665aeqq" path="res://refrences/2D lighting tutorial/light.png" id="5_oljv4"]
-[ext_resource type="Texture2D" uid="uid://be7kpix7mry7c" path="res://refrences/paralax tutorial/parallax-00.png" id="7_2htk7"]
+[ext_resource type="Texture2D" uid="uid://do6tsyib24qeb" path="res://refrences/2D lighting tutorial/light.png" id="5_oljv4"]
+[ext_resource type="Texture2D" uid="uid://ckku5u1gxllle" path="res://refrences/paralax tutorial/parallax-00.png" id="7_2htk7"]
 [ext_resource type="Script" path="res://ParallaxClouds.gd" id="8_d2qgn"]
-[ext_resource type="Texture2D" uid="uid://begaffd3l4n7y" path="res://refrences/paralax tutorial/parallax-01.png" id="8_iasdf"]
+[ext_resource type="Texture2D" uid="uid://dts8m6lnuh8ph" path="res://refrences/paralax tutorial/parallax-01.png" id="8_iasdf"]
 [ext_resource type="Theme" uid="uid://l2kuag675c7k" path="res://general theme.tres" id="9_0jkfe"]
 [ext_resource type="PackedScene" uid="uid://buv03lchlewpy" path="res://Torch.tscn" id="9_u3cns"]
-[ext_resource type="Texture2D" uid="uid://cohlcxchno3kj" path="res://refrences/paralax tutorial/parallax-02.png" id="9_wup5p"]
-[ext_resource type="Texture2D" uid="uid://cjld1c0aclu42" path="res://refrences/paralax tutorial/parallax-03.png" id="10_6to6y"]
-[ext_resource type="Texture2D" uid="uid://bpxalaho72knf" path="res://refrences/paralax tutorial/parallax-04.png" id="11_8k3en"]
-[ext_resource type="Texture2D" uid="uid://c7otxikx4hogh" path="res://sprites/title.png" id="12_tno4j"]
+[ext_resource type="Texture2D" uid="uid://db6ycqylcujck" path="res://refrences/paralax tutorial/parallax-02.png" id="9_wup5p"]
+[ext_resource type="Texture2D" uid="uid://s6dmy210se64" path="res://refrences/paralax tutorial/parallax-03.png" id="10_6to6y"]
+[ext_resource type="Texture2D" uid="uid://1j03ug4xxe1l" path="res://refrences/paralax tutorial/parallax-04.png" id="11_8k3en"]
+[ext_resource type="Texture2D" uid="uid://c57nio6b7yfwl" path="res://sprites/title.png" id="12_tno4j"]
 
 [node name="Titlescreen" type="Node2D"]
 script = ExtResource("1_xus21")
@@ -63,13 +63,6 @@ scale = Vector2(1.5, 1.5)
 energy = 2.94
 texture = ExtResource("5_oljv4")
 texture_scale = 0.6
-
-[node name="BTNchangeCharacter" type="Button" parent="UI"]
-layout_mode = 0
-offset_left = 370.0
-offset_top = 243.0
-offset_right = 526.0
-offset_bottom = 286.0
 
 [node name="Torch" parent="." instance=ExtResource("9_u3cns")]
 position = Vector2(164.95, 317)
